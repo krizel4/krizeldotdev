@@ -3,6 +3,11 @@
 @tailwind utilities;
 @tailwind variants;
 
+@font-face {
+  font-family: "NeueHaasGroteskDisplay45Light";
+  src: url('./NeueHaasGroteskDisplay45Light/font.woff2') format('woff2'), url('./NeueHaasGroteskDisplay45Light/font.woff') format('woff');
+}
+
 h1,
 h2,
 h3,

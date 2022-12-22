@@ -8,6 +8,15 @@ exports.COLOR_THEMES = {
       'gradient-4': '#8785FF',
     },
   },
+  midnights_13: {
+    colors: {
+      primary: '#4e4466',
+      'gradient-1': '#526d85',
+      'gradient-2': '#c9e8fd',
+      'gradient-3': '#e2d5f1',
+      'gradient-4': '#b8acd1',
+    },
+  },
   bejamas: {
     colors: {
       primary: '#FF8585',
@@ -47,7 +56,7 @@ exports.COLOR_THEMES = {
 };
 
 exports.FONT_THEMES = {
-  'sans-serif': `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
+  'sans-serif': `"NeueHaasGroteskDisplay45Light", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Symbol", "Noto Color Emoji"`,
   serif: `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
   monospace: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
 };

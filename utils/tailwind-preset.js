@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin');
 const pluginTypography = require('@tailwindcss/typography');
 const { COLOR_THEMES, FONT_THEMES } = require('../themes');
 
-const THEME = process.env.BLOG_THEME || 'default';
+const THEME = process.env.BLOG_THEME || 'midnights_13';
 const FONT_PRIMARY = process.env.BLOG_FONT_HEADINGS || 'sans-serif';
 const FONT_SECONDARY = process.env.BLOG_FONT_BODY || 'sans-serif';
 
@@ -50,15 +50,15 @@ module.exports = {
         secondary: 'var(--font-secondary)',
       },
       theme: {
-        bejamas: {
+        midnights_13: {
           colors: {
-            primary: '#FF8585',
-            'gradient-1': '#7d7aff',
-            'gradient-2': '#2121E2',
-            'gradient-3': '#FF76B8',
-            'gradient-4': '#001AFF',
+            primary: '#4e4466',
+            'gradient-1': '#4e4466',
+            'gradient-2': '#526d85',
+            'gradient-3': '#c9e8fd',
+            'gradient-4': '#b8acd1',
           },
-        },
+        }
       },
       typography(theme) {
         return {
