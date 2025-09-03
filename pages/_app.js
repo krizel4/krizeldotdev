@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/quiz.css';
 import 'prismjs/themes/prism-tomorrow.css';
 // import localFont from '../styles'
 

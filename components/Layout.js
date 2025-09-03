@@ -23,6 +23,10 @@ export default function Layout({ children }) {
       document.documentElement.classList.add('dark');
     } else if (lightMode) {
       document.documentElement.classList.remove('dark');
+    } else {
+      // Default to dark mode if no theme preference is stored
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     }
     return;
   };
