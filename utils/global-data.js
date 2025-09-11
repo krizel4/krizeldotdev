@@ -4,7 +4,7 @@ export const getGlobalData = () => {
     : 'Krizel Minnema';
   const blogTitle = process.env.BLOG_TITLE
     ? decodeURI(process.env.BLOG_TITLE)
-    : 'MOps | Web Marketing Leader';
+    : 'MOps | Digital Marketing Leader';
   const footerText = process.env.BLOG_FOOTER_TEXT
     ? decodeURI(process.env.BLOG_FOOTER_TEXT)
     : 'All rights reserved.';

@@ -18,10 +18,10 @@ export default function Index({ posts, globalData }) {
       <Hero globalData={globalData} />
       
       {/* Featured Blog Posts Section */}
-      <div className="bg-white dark:bg-black py-16">
+      <div className="bg-gray-100 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold dark:text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Featured Posts
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -33,7 +33,7 @@ export default function Index({ posts, globalData }) {
             {featuredPosts.map((post) => (
               <div
                 key={post.filePath}
-                className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 overflow-hidden hover:bg-opacity-20 dark:hover:bg-opacity-50 transition-all duration-300 hover:scale-105"
+                className="backdrop-blur-lg bg-white/80 dark:bg-white/10 dark:bg-black/30 rounded-lg border border-gray-300 dark:border-gray-700 dark:border-white border-opacity-20 dark:border-opacity-10 overflow-hidden hover:bg-white/90 dark:hover:bg-white/20 dark:hover:bg-black/50 transition-all duration-300 hover:scale-105"
               >
                 {/* Preview Image */}
                 <div className="h-48 bg-gradient-to-br from-gradient-1 to-gradient-2 relative overflow-hidden">
@@ -52,7 +52,7 @@ export default function Index({ posts, globalData }) {
                 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 dark:text-white line-clamp-2">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
                     {post.data.title}
                   </h3>
                   {post.data.description && (
@@ -66,7 +66,7 @@ export default function Index({ posts, globalData }) {
                     as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                     href={`/posts/[slug]`}
                   >
-                    <a className="inline-flex items-center bg-gradient-3 text-white px-4 py-2 rounded-lg font-medium hover:bg-gradient-4 transition-colors">
+                    <a className="inline-flex items-center bg-white text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900">
                       Read More
                       <ArrowIcon className="ml-2" />
                     </a>
@@ -79,7 +79,7 @@ export default function Index({ posts, globalData }) {
           {/* View All Posts Button */}
           <div className="text-center mt-12">
             <Link href="/blog">
-              <a className="inline-flex items-center bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-6 py-3 rounded-lg font-medium border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              <a className="inline-flex items-center bg-white text-gray-900 px-6 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900">
                 View All Posts
                 <ArrowIcon className="ml-2" />
               </a>
@@ -88,7 +88,9 @@ export default function Index({ posts, globalData }) {
         </div>
       </div>
       
-      <Footer copyrightText={globalData.footerText} />
+      <div className="bg-gray-200 dark:bg-gray-800">
+        <Footer copyrightText={globalData.footerText} />
+      </div>
     </div>
   );
 }

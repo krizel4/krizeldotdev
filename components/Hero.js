@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Linkedin, Github } from 'lucide-react';
 
 const FloatingNav = () => {
   const router = useRouter();
@@ -68,7 +69,7 @@ export default function Hero({ globalData }) {
         <div className="relative z-10 flex items-end h-full p-8 lg:p-12 xl:p-16">
           <div className="text-white">
             <p className="text-sm font-medium uppercase tracking-wider mb-4 opacity-80">
-              Hello, I'm
+              Hello, I&apos;m
             </p>
             <h1 className="text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 leading-tight">
               {globalData.name}.
@@ -102,7 +103,7 @@ export default function Hero({ globalData }) {
             {globalData.blogTitle}
           </p>
           <p className="text-sm opacity-80">
-            San Francisco, California
+            Los Angeles, CA
           </p>
         </div>
 
@@ -114,8 +115,8 @@ export default function Hero({ globalData }) {
             </a>
           </p>
           <p className="text-sm">
-            <a href="tel:+1234567890" className="hover:text-gradient-3 transition-colors">
-              (123) 456-7890
+            <a href="tel:+18183005908" className="hover:text-gradient-3 transition-colors">
+              (818) 300-5908
             </a>
           </p>
         </div>
@@ -123,21 +124,15 @@ export default function Hero({ globalData }) {
         {/* Social Media Icons */}
         <div className="flex space-x-4 mb-8">
           <a href="https://linkedin.com/in/krizelminnema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-            <span className="text-white text-sm font-bold">in</span>
+            <Linkedin className="w-4 h-4 text-white" />
           </a>
           <a href="https://github.com/krizelminnema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-            <span className="text-white text-sm font-bold">gh</span>
-          </a>
-          <a href="https://twitter.com/krizelminnema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-            <span className="text-white text-sm font-bold">tw</span>
-          </a>
-          <a href="https://instagram.com/krizelminnema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-            <span className="text-white text-sm font-bold">ig</span>
+            <Github className="w-4 h-4 text-white" />
           </a>
         </div>
 
         {/* Download CV Button */}
-        <button className="bg-gradient-3 text-white px-6 py-3 rounded-lg font-medium hover:bg-gradient-4 transition-colors">
+        <button className="bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           Download CV
         </button>
       </div>

@@ -17,4 +17,4 @@ Blog about marketing ops, data and demand gen.
 
 ## Tools and resources
 
-- [Netlify Theme by Bejamas](https://www.netlify.com/blog/a-beautiful-bejamas-blog-template-with-next.js-on-netlify/)
+- Built on top of the [Netlify Theme by Bejamas](https://www.netlify.com/blog/a-beautiful-bejamas-blog-template-with-next.js-on-netlify/)

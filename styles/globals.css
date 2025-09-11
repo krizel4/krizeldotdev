@@ -19,4 +19,12 @@ h6 {
 
 body {
   font-family: var(--font-secondary);
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Light mode override */
+.light body {
+  background-color: #ffffff;
+  color: #000000;
 }

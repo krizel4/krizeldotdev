@@ -21,11 +21,14 @@ export default function Layout({ children, showNavigation = true }) {
 
     if (userTheme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else if (userTheme === 'light') {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     } else {
       // Default to dark mode if no theme preference is stored
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
       localStorage.setItem('theme', 'dark');
     }
     return;
@@ -40,6 +43,7 @@ export default function Layout({ children, showNavigation = true }) {
       if (!userTheme) {
         // Default to dark theme regardless of system preference
         document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
         localStorage.setItem('theme', 'dark');
       }
     };
