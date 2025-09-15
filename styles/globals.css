@@ -18,7 +18,11 @@ body {
   color: #ffffff;
 }
 
-/* Light mode override */
+.thick-underline {
+  padding: 0 .1em;
+  box-shadow: inset 0 -.6em #989ba840;
+}
+
 .light body {
   background-color: #ffffff;
   color: #000000;

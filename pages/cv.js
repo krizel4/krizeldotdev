@@ -1,15 +1,8 @@
 import Layout, { GradientBackground } from '../components/Layout';
-import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
 import { useState } from 'react';
-
-// Skill badge component to reduce repetition
-const SkillBadge = ({ children }) => (
-  <span className="skill-badge">
-    {children}
-  </span>
-);
+import Skillbadge from '../components/Skillbadge';
 
 export default function CV({ globalData }) {
   const [activeSection, setActiveSection] = useState('overview');
@@ -19,36 +12,28 @@ export default function CV({ globalData }) {
       title: '',
       subtitle: '',
       content: (
-        <div className="space-y-6">
+        <>
           <div>
-            <h2>Education</h2>
-            <h3>Masters of Business Administration, 2017</h3>
-            <p className="text-lg">Southern New Hampshire University</p>
-            <h3>Bachelors of Arts, Film and Media, 2015</h3>
-            <p>University of California, Santa Barbara</p>
-          </div>
-          <div
-            className="bg-gray-900 dark:bg-gray-100 opacity-10"
-            style={{
-              height: '1rem',
-              margin: '0',
-            }}
-          ></div>
-          <div>
-            <h2>Skills</h2>
+            <h2 className="thick-underline">Experience</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               15 years experience in Digital Marketing
             </p>
           </div>
 
-          <h3>Skills</h3>
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-            UI/UX Design / Strategy / Product Management / User Research / Agile
-            Methodologies / Collaboration / Design Sprints / Design Systems /
-            HTML and CSS / CMS Design & Architecture / Webflow Development /
-            Framer Development / Photography / Graphic Design
-          </p>
-        </div>
+          <div>
+            <h2 className="thick-underline">Education</h2>
+            <h3>Masters of Business Administration, 2017</h3>
+            <p className="text-lg">Southern New Hampshire University</p>
+            <h3>Bachelors of Arts, Film and Media, 2015</h3>
+            <p>University of California, Santa Barbara</p>
+          </div>
+
+          <h3 className="thick-underline">Skills</h3>
+          <Skillbadge>
+            Salesforce,
+            Marketo
+          </Skillbadge>
+        </>
       ),
     },
     experience: {
@@ -72,18 +57,18 @@ export default function CV({ globalData }) {
             </p>
 
             <div className="mt-6">
-              <div className="flex flex-wrap gap-2">
-                <SkillBadge>Salesforce</SkillBadge>
-                <SkillBadge>Marketo</SkillBadge>
-                <SkillBadge>AEM.Live</SkillBadge>
-                <SkillBadge>Marketo Measure</SkillBadge>
-                <SkillBadge>Tableau</SkillBadge>
-                <SkillBadge>UX Optimization</SkillBadge>
-                <SkillBadge>HTML, CSS, JavaScript</SkillBadge>
-                <SkillBadge>Adobe Creative Cloud</SkillBadge>
-                <SkillBadge>SEM</SkillBadge>
-                <SkillBadge>Google AdWords</SkillBadge>
-              </div>
+              <Skillbadge>
+                Salesforce,
+                Marketo,
+                AEM.Live,
+                Marketo Measure,
+                Tableau,
+                UX Optimization,
+                HTML, CSS, JavaScript,
+                Adobe Creative Cloud,
+                SEM,
+                Google AdWords
+              </Skillbadge>
             </div>
           </div>
         </div>
@@ -105,17 +90,15 @@ export default function CV({ globalData }) {
             </p>
 
             <div className="mt-6">
-              <div className="flex flex-wrap gap-2">
-                <SkillBadge>Salesforce</SkillBadge>
-                <SkillBadge>Pardot</SkillBadge>
-                <SkillBadge>Wordpress</SkillBadge>
-                <SkillBadge>ActiveCampaign</SkillBadge>
-                <SkillBadge>
-                  Email Marketing & Coding like it&apos;s 1999
-                </SkillBadge>
-                <SkillBadge>Lasso CRM</SkillBadge>
-                <SkillBadge>GTM Research</SkillBadge>
-              </div>
+              <Skillbadge>
+                Salesforce,
+                Pardot,
+                Wordpress,
+                ActiveCampaign,
+                Email Marketing & Coding like it&apos;s 1999,
+                Lasso CRM,
+                GTM Research
+              </Skillbadge>
             </div>
           </div>
         </div>
@@ -140,14 +123,14 @@ export default function CV({ globalData }) {
             </p>
           </div>
           <div className="mt-6">
-            <div className="flex flex-wrap gap-2">
-              <SkillBadge>Google Analytics</SkillBadge>
-              <SkillBadge>SEM</SkillBadge>
-              <SkillBadge>Wordpress</SkillBadge>
-              <SkillBadge>Adobe Creative Cloud</SkillBadge>
-              <SkillBadge>Social Media Marketing</SkillBadge>
-              <SkillBadge>Business Development</SkillBadge>
-            </div>
+            <Skillbadge>
+              Google Analytics,
+              SEM,
+              Wordpress,
+              Adobe Creative Cloud,
+              Social Media Marketing,
+              Business Development
+            </Skillbadge>
           </div>
         </div>
       ),
@@ -169,14 +152,14 @@ export default function CV({ globalData }) {
           </p>
 
           <div className="mt-6">
-            <div className="flex flex-wrap gap-2">
-              <SkillBadge>Google Analytics</SkillBadge>
-              <SkillBadge>SEM</SkillBadge>
-              <SkillBadge>Wordpress</SkillBadge>
-              <SkillBadge>Adobe Creative Cloud</SkillBadge>
-              <SkillBadge>Social Media Marketing</SkillBadge>
-              <SkillBadge>Brand Development</SkillBadge>
-            </div>
+            <Skillbadge>
+              Google Analytics,
+              SEM,
+              Wordpress,
+              Adobe Creative Cloud,
+              Social Media Marketing,
+              Brand Development
+            </Skillbadge>
           </div>
         </div>
       ),
@@ -198,12 +181,12 @@ export default function CV({ globalData }) {
           </p>
 
           <div className="mt-6">
-            <div className="flex flex-wrap gap-2">
-              <SkillBadge>MailChimp</SkillBadge>
-              <SkillBadge>Social Media Marketing</SkillBadge>
-              <SkillBadge>Event Marketing</SkillBadge>
-              <SkillBadge>Leadership Development</SkillBadge>
-            </div>
+            <Skillbadge>
+              MailChimp,
+              Social Media Marketing,
+              Event Marketing,
+              Leadership Development
+            </Skillbadge>
           </div>
         </div>
       ),

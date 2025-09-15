@@ -2,11 +2,7 @@ import Layout, { GradientBackground } from '../components/Layout';
 import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
 import Image from 'next/image';
-
-// Reusable skill badge component
-const SkillBadge = ({ children }) => (
-  <span className="skill-badge-lg">{children}</span>
-);
+import Skillbadge from '../components/Skillbadge';
 
 export default function About({ globalData }) {
   return (
@@ -58,14 +54,14 @@ export default function About({ globalData }) {
             {/* Skills & Tech Stack */}
             <div className="mt-8">
               <div className="flex flex-wrap gap-3">
-                <SkillBadge>JavaScript</SkillBadge>
-                <SkillBadge>React</SkillBadge>
-                <SkillBadge>Next.js</SkillBadge>
-                <SkillBadge>Node.js</SkillBadge>
-                <SkillBadge>Salesforce</SkillBadge>
-                <SkillBadge>Marketo</SkillBadge>
-                <SkillBadge>Analytics</SkillBadge>
-                <SkillBadge>Web Development</SkillBadge>
+                <Skillbadge>JavaScript</Skillbadge>
+                <Skillbadge>React</Skillbadge>
+                <Skillbadge>Next.js</Skillbadge>
+                <Skillbadge>Node.js</Skillbadge>
+                <Skillbadge>Salesforce</Skillbadge>
+                <Skillbadge>Marketo</Skillbadge>
+                <Skillbadge>Analytics</Skillbadge>
+                <Skillbadge>Web Development</Skillbadge>
               </div>
             </div>
           </div>
