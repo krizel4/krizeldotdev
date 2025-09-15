@@ -17,7 +17,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <Link href="/">
-            <a className="text-xl font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+            <a className="text-xl font-bold text-gray-900 dark:text-white hover:text-primary transition-colors" style={{ fontFamily: 'moret, serif' }}>
               Krizel Minnema
             </a>
           </Link>
@@ -36,6 +36,7 @@ export default function Navigation() {
                         ? 'text-primary'
                         : 'text-gray-600 dark:text-gray-300'
                     }`}
+                    style={{ fontFamily: 'roc-grotesk, sans-serif' }}
                   >
                     {item.name}
                   </a>

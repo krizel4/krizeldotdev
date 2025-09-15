@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import styles from './Layout.module.css';
-import Navigation from './Navigation';
+import SidebarNav from './SidebarNav';
 
 export function GradientBackground({ variant, className }) {
   const classes = classNames(
@@ -38,13 +38,15 @@ export default function Layout({ children, showNavigation = true }) {
     var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     darkQuery.onchange = (e) => {
-      // Only respect system theme changes if user hasn't explicitly set a preference
-      const userTheme = localStorage.getItem('theme');
-      if (!userTheme) {
-        // Default to dark theme regardless of system preference
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        localStorage.setItem('theme', 'dark');
+      // Only respect system theme change if no user preference is stored
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
       }
     };
   };
@@ -58,10 +60,12 @@ export default function Layout({ children, showNavigation = true }) {
   }, []);
 
   return (
-    <div className="relative pb-24 overflow-hidden">
-      {showNavigation && <Navigation />}
-      <div className={`flex flex-col items-center max-w-2xl w-full mx-auto ${showNavigation ? 'pt-20' : ''}`}>
-        {children}
+    <div className="flex h-screen overflow-hidden">
+      {showNavigation && <SidebarNav />}
+      <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-16' : ''}`}>
+        <div className="flex flex-col items-center max-w-5xl w-full mx-auto px-8 py-8">
+          {children}
+        </div>
       </div>
     </div>
   );

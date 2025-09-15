@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
-
 import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
@@ -11,9 +10,7 @@ export default function Blog({ posts, globalData }) {
     <Layout>
       <SEO title="Blog" description="Latest blog posts by Krizel Minnema" />
       <main className="w-full">
-        <h1 className="text-3xl lg:text-5xl text-center mb-12 dark:text-white">
-          Blog Posts
-        </h1>
+        <h1 className="page-title-md text-left">Blog Posts</h1>
         <ul className="w-full">
           {posts.map((post) => (
             <li
@@ -26,15 +23,11 @@ export default function Blog({ posts, globalData }) {
               >
                 <a className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4">
                   {post.data.date && (
-                    <p className="uppercase mb-3 font-bold opacity-60">
-                      {post.data.date}
-                    </p>
+                    <p className="blog-date">{post.data.date}</p>
                   )}
-                  <h2 className="text-2xl md:text-3xl">{post.data.title}</h2>
+                  <h2 className="blog-title">{post.data.title}</h2>
                   {post.data.description && (
-                    <p className="mt-3 text-lg opacity-60">
-                      {post.data.description}
-                    </p>
+                    <p className="blog-description">{post.data.description}</p>
                   )}
                   <ArrowIcon className="mt-4" />
                 </a>

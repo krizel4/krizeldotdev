@@ -1,79 +1,70 @@
+import { Linkedin, Github } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
+
 const moonIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="21"
-    height="20"
+    width="16"
+    height="16"
     fill="none"
-    viewBox="0 0 21 20"
+    viewBox="0 0 16 16"
   >
     <path
-      stroke="#fff"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="2"
-      className="stroke-current text-gray-400 dark:text-white"
-      d="M19.5 10.79A9 9 0 119.71 1a7 7 0 009.79 9.79v0z"
-    ></path>
+      strokeWidth="1.5"
+      d="M14 8.5A6 6 0 118.5 2.5a4.5 4.5 0 005.5 6z"
+    />
   </svg>
 );
 
 const sunIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="24"
+    width="16"
+    height="16"
     fill="none"
-    viewBox="0 0 25 24"
-    className="dark:opacity-50"
+    viewBox="0 0 16 16"
   >
-    <g
-      stroke="#fff"
+    <path
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="2"
-      clipPath="url(#clip0_192_823)"
-    >
-      <path d="M12.5 17a5 5 0 100-10 5 5 0 000 10zM12.5 1v2M12.5 21v2M4.72 4.22l1.42 1.42M18.86 18.36l1.42 1.42M1.5 12h2M21.5 12h2M4.72 19.78l1.42-1.42M18.86 5.64l1.42-1.42"></path>
-    </g>
-    <defs>
-      <clipPath id="clip0_192_823">
-        <path
-          className="fill-current text-white"
-          d="M0 0H24V24H0z"
-          transform="translate(.5)"
-        ></path>
-      </clipPath>
-    </defs>
+      strokeWidth="1.5"
+      d="M8 12a4 4 0 100-8 4 4 0 000 8zM8 1v1M8 14v1M3.5 3.5l.7.7M11.8 11.8l.7.7M1 8h1M14 8h1M3.5 12.5l.7-.7M11.8 4.2l.7-.7"
+    />
   </svg>
 );
 
 const ThemeSwitcher = () => {
+  const { theme, toggleTheme } = useTheme();
+  
   return (
-    <div className="flex mt-6 bg-white justify-center dark:bg-gray-900 rounded-3xl p-1">
-      <button
-        type="button"
-        aria-label="Use Dark Mode"
-        onClick={() => {
-          document.documentElement.classList.add('dark');
-          document.documentElement.classList.remove('light');
-          localStorage.setItem('theme', 'dark');
-        }}
-        className="flex items-center h-full pr-2 dark:bg-primary rounded-3xl flex justify-center align-center p-2 w-24 h-10 transition"
-      >
-        {moonIcon}
-      </button>
-
+    <div className="flex bg-gray-200 dark:bg-gray-700 rounded-full p-1 mt-4">
       <button
         type="button"
         aria-label="Use Light Mode"
-        onClick={() => {
-          document.documentElement.classList.remove('dark');
-          document.documentElement.classList.add('light');
-          localStorage.setItem('theme', 'light');
-        }}
-        className="flex items-center h-full pr-2 bg-primary dark:bg-transparent rounded-3xl flex justify-center align-center p-2 w-24 h-10 transition"
+        onClick={toggleTheme}
+        className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+          theme === 'light' 
+            ? 'bg-white text-gray-600 shadow-sm' 
+            : 'text-gray-400 hover:text-gray-300'
+        }`}
       >
         {sunIcon}
+      </button>
+      <button
+        type="button"
+        aria-label="Use Dark Mode"
+        onClick={toggleTheme}
+        className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
+          theme === 'dark' 
+            ? 'bg-indigo-600 text-white shadow-sm' 
+            : 'text-gray-400 hover:text-gray-300'
+        }`}
+      >
+        {moonIcon}
       </button>
     </div>
   );
@@ -81,11 +72,55 @@ const ThemeSwitcher = () => {
 
 export default function Footer({ copyrightText }) {
   return (
-    <footer className="py-16 flex flex-col items-center">
-      <p className="dark:text-white uppercase mb-3 font-bold opacity-60">
-        {copyrightText}
-      </p>
-      <ThemeSwitcher />
+    <footer className="py-12 bg-gray-100 dark:bg-gray-800">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
+          {/* Left side - Copyright and Theme Toggle */}
+          <div className="flex flex-col items-center lg:items-start">
+            <p className="text-gray-600 dark:text-gray-400 uppercase text-sm font-medium mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
+              {copyrightText}
+            </p>
+            <ThemeSwitcher />
+          </div>
+          
+          {/* Right side - Contact Information and Social Links */}
+          <div className="mt-8 lg:mt-0 flex flex-col items-center lg:items-end">
+            <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
+              <p>
+                <a href="mailto:hello@krizel.dev" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+                  hello@krizel.dev
+                </a>
+              </p>
+              <p>
+                <a href="tel:+18183005908" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+                  (818) 300-5908
+                </a>
+              </p>
+              <p>Los Angeles, CA</p>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              <a
+                href="https://linkedin.com/in/krizelminnema"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://github.com/krizelminnema"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

@@ -5,16 +5,25 @@
 - [Tools/Resources](#tools-and-resources)
 
 ## About
-Blog about marketing ops, data and demand gen.
+Personal CV and Blog    
 
 ## Tech Stack
 
-- [Contenful](https://www.contentful.com)
+### 🚀 Core Framework
 - [Netlify](http://netlify.com)
 - [Next.js](https://github.com/vercel/next.js) v12
+- [React 18](https://react.dev/blog/2022/03/29/react-v18)
+
+### 🎨 Styling & UI
 - [Tailwind](https://tailwindcss.com/) v3.0
+- [Framer Motion](https://www.npmjs.com/package/framer-motion)
+- Base Build Started from [Bejamas Next.js Blog Theme](https://github.com/netlify-templates/nextjs-blog-theme)
+
+### 📝Content Management
 - Built-in [MDX](https://mdxjs.com/) v1 support
+- [Contenful](https://www.contentful.com)
 
-## Tools and resources
-
-- Built on top of the [Netlify Theme by Bejamas](https://www.netlify.com/blog/a-beautiful-bejamas-blog-template-with-next.js-on-netlify/)
+### 🔧 Dev & Deployment
+- [ESLint](https://eslint.org/)
+- [Cypress](https://docs.cypress.io/)
+- [Netlify](https://www.netlify.com/)

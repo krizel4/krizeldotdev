@@ -1,36 +1,90 @@
 import Layout, { GradientBackground } from '../components/Layout';
-import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
+import Image from 'next/image';
+
+// Reusable skill badge component
+const SkillBadge = ({ children }) => (
+  <span className="skill-badge-lg">{children}</span>
+);
 
 export default function About({ globalData }) {
   return (
     <Layout>
       <SEO title="About" description="About Krizel Minnema" />
       <main className="w-full">
-        <h1 className="text-3xl lg:text-5xl text-center mb-12 dark:text-white">
-          About Me
-        </h1>
-        <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-8">
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I'm baby same pickled shaman vinyl umami, kogi wayfarers.
-              Solarpunk gluten-free knausgaard, williamsburg kogi semiotics
-              pinterest lo-fi blackbird spyplane PBR&B retro cardigan adaptogen.
-              Vibecession poke kitsch, ugh helvetica enamel pin mixtape beard
-              offal craft beer ascot lyft XOXO flannel readymade. Normcore next
-              level four loko cray af keytar, actually gatekeep vegan
-              microdosing selfies celiac. Jean shorts cred kickstarter cupping
-              quinoa authentic four dollar toast readymade. PBR&B narwhal hot
-              chicken whatever chillwave fashion axe put a bird on it, tonx wolf
-              cloud bread gastropub Brooklyn leggings vice. Man braid man bun
-              try-hard cray, slow-carb iPhone bushwick glossier 8-bit meh salvia
-              scenester jean shorts artisan pinterest.
-            </p>
+        <h1 className="page-title-md text-left">About Me</h1>
+
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          {/* Content - Left Side */}
+          <div className="flex-1">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p className="prose-text">
+                When I was a little girl, I convinced my cousins that to make
+                perfume, you had to mix rubbing alcohol and flowers. &quot;Just mash
+                them up in a jar and magic.&quot; I took it a step further and I
+                asked them to help me sell jars of this stuff to neighbors. And
+                the neighbors would buy it! After all, who&apos;d say no to a
+                bunch of little kids hustling to make a dime so they can buy
+                candy? It didn&apos;t matter that our perfume probably made them
+                smell like a hospital clinic; it was what that purchase meant to
+                my neighbor and what that purchase meant to us. What I love
+                about marketing is the power to communicate value. Marketing is
+                about uncovering great stories worth sharing and delivering
+                experiences and products that matter. With the internet, you can
+                spread powerful missions like wildfire. That&apos;s why I love
+                digital marketing, tech and all things internet.
+              </p>
+              <p>
+                My core, technical competencies include a wide breadth of
+                solutions, including martech systems architecture, business
+                intelligence and full stack web development.
+              </p>
+              <p>
+                At the end of the day, what gives me the most excitement is
+                problem solving, whether that&apos;s figuring out how to close
+                gaps in KPIs or optimize campaigns and its delivery. I work well
+                as a project manager and team collaborator to improve ROI and
+                workflow efficiency.
+              </p>
+              <p>
+                When I&apos;m not working, I love to learn new things like
+                phrases from a different language, tinkering in video
+                production, or random things like obscure Scrabble words and
+                facts that only have a place at dive bar trivia nights.
+              </p>
+            </div>
+
+            {/* Skills & Tech Stack */}
+            <div className="mt-8">
+              <div className="flex flex-wrap gap-3">
+                <SkillBadge>JavaScript</SkillBadge>
+                <SkillBadge>React</SkillBadge>
+                <SkillBadge>Next.js</SkillBadge>
+                <SkillBadge>Node.js</SkillBadge>
+                <SkillBadge>Salesforce</SkillBadge>
+                <SkillBadge>Marketo</SkillBadge>
+                <SkillBadge>Analytics</SkillBadge>
+                <SkillBadge>Web Development</SkillBadge>
+              </div>
+            </div>
+          </div>
+
+          {/* Image - Right Side */}
+          <div className="flex-shrink-0 lg:w-1/3">
+            <div className="relative w-full h-96 lg:h-[500px] rounded-lg overflow-hidden">
+              <Image
+                src="/profile-image.png"
+                alt="Krizel Minnema"
+                width={400}
+                height={500}
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </main>
-      <Footer copyrightText={globalData.footerText} />
       <GradientBackground
         variant="large"
         className="fixed top-0 opacity-40 dark:opacity-60"

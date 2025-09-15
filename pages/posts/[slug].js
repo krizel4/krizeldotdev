@@ -5,7 +5,6 @@ import {
   getPreviousPostBySlug,
   postFilePaths,
 } from '../../utils/mdx-utils';
-
 import { MDXRemote } from 'next-mdx-remote';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -44,11 +43,9 @@ export default function PostPage({
       <Header name={globalData.name} />
       <article className="px-6 md:px-0">
         <header>
-          <h1 className="text-3xl md:text-5xl dark:text-white text-center mb-12">
-            {frontMatter.title}
-          </h1>
+          <h1 className="post-title">{frontMatter.title}</h1>
           {frontMatter.description && (
-            <p className="text-xl mb-4">{frontMatter.description}</p>
+            <p className="post-description">{frontMatter.description}</p>
           )}
         </header>
         <main>
@@ -60,12 +57,8 @@ export default function PostPage({
           {prevPost && (
             <Link href={`/posts/${prevPost.slug}`}>
               <a className="py-8 px-10 text-center md:text-right first:rounded-t-lg md:first:rounded-tr-none md:first:rounded-l-lg last:rounded-r-lg first last:rounded-b-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 last:border-t md:border-r-0 md:last:border-r md:last:rounded-r-none flex flex-col">
-                <p className="uppercase text-gray-500 mb-4 dark:text-white dark:opacity-60">
-                  Previous
-                </p>
-                <h4 className="text-2xl text-gray-700 mb-6 dark:text-white">
-                  {prevPost.title}
-                </h4>
+                <p className="nav-label">Previous</p>
+                <h4 className="nav-title">{prevPost.title}</h4>
                 <ArrowIcon className="transform rotate-180 mx-auto md:mr-0 mt-auto" />
               </a>
             </Link>
@@ -73,12 +66,8 @@ export default function PostPage({
           {nextPost && (
             <Link href={`/posts/${nextPost.slug}`}>
               <a className="py-8 px-10 text-center md:text-left md:first:rounded-t-lg last:rounded-b-lg first:rounded-l-lg md:last:rounded-bl-none md:last:rounded-r-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 border-t-0 first:border-t first:rounded-t-lg md:border-t border-b-0 last:border-b flex flex-col">
-                <p className="uppercase text-gray-500 mb-4 dark:text-white dark:opacity-60">
-                  Next
-                </p>
-                <h4 className="text-2xl text-gray-700 mb-6 dark:text-white">
-                  {nextPost.title}
-                </h4>
+                <p className="nav-label">Next</p>
+                <h4 className="nav-title">{nextPost.title}</h4>
                 <ArrowIcon className="mt-auto mx-auto md:ml-0" />
               </a>
             </Link>

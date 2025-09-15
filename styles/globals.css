@@ -3,22 +3,18 @@
 @tailwind utilities;
 @tailwind variants;
 
-@font-face {
-  font-family: "NeueHaasGroteskDisplay45Light";
-  src: url('./NeueHaasGroteskDisplay45Light/font.woff2') format('woff2'), url('./NeueHaasGroteskDisplay45Light/font.woff') format('woff');
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-primary);
+  font-family: 'moret', serif;
+  margin-top: 10%;
 }
 
 body {
-  font-family: var(--font-secondary);
+  font-family: 'roc-grotesk', sans-serif;
   background-color: #000000;
   color: #ffffff;
 }
@@ -27,4 +23,107 @@ body {
 .light body {
   background-color: #ffffff;
   color: #000000;
+}
+
+footer {
+  width: 100%;
+}
+
+/* Reusable Component Styles */
+.skill-badge {
+  @apply px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs font-medium;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.skill-badge-lg {
+  @apply px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.date-heading {
+  @apply text-xl font-semibold dark:text-white mb-2;
+  font-family: 'moret', serif;
+}
+
+.section-title {
+  @apply text-2xl font-bold mb-6 dark:text-white;
+  font-family: 'moret', serif;
+}
+
+.page-title {
+  @apply text-4xl lg:text-5xl mb-8 dark:text-white;
+  font-family: 'moret', serif;
+}
+
+.page-title-md {
+  @apply text-3xl lg:text-5xl mb-12 dark:text-white;
+  font-family: 'moret', serif;
+}
+
+.nav-button {
+  @apply block w-full text-left text-2xl lg:text-3xl font-light transition-colors py-2;
+  font-family: 'moret', serif;
+}
+
+.nav-button-active {
+  @apply text-gray-900 dark:text-white;
+}
+
+.nav-button-inactive {
+  @apply text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200;
+}
+
+.subtitle-text {
+  @apply text-sm ml-0;
+  font-family: 'roc-grotesk', sans-serif;
+  color: rgb(209 213 219);
+}
+
+/* Text Styles */
+.text-serif {
+  font-family: 'moret', serif;
+}
+
+.text-sans {
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.prose-text {
+  @apply text-lg text-gray-600 dark:text-gray-300 leading-relaxed;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.blog-date {
+  @apply uppercase mb-3 font-bold opacity-60;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.blog-title {
+  @apply text-2xl md:text-3xl;
+  font-family: 'moret', serif;
+}
+
+.blog-description {
+  @apply mt-3 text-lg opacity-60;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.post-title {
+  @apply text-3xl md:text-5xl dark:text-white text-center mb-12;
+  font-family: 'moret', serif;
+}
+
+.post-description {
+  @apply text-xl mb-4;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.nav-label {
+  @apply uppercase text-gray-500 mb-4 dark:text-white dark:opacity-60;
+  font-family: 'roc-grotesk', sans-serif;
+}
+
+.nav-title {
+  @apply text-2xl text-gray-700 mb-6 dark:text-white;
+  font-family: 'moret', serif;
 }
