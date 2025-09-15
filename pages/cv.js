@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
 import { useState } from 'react';
 import Skillbadge from '../components/Skillbadge';
+import CareerTimeline from '../components/CareerTimeline';
 
 export default function CV({ globalData }) {
   const [activeSection, setActiveSection] = useState('overview');
@@ -14,29 +15,68 @@ export default function CV({ globalData }) {
       content: (
         <>
           <div>
-            <h2 className="thick-underline">Experience</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              15 years experience in Digital Marketing
+            <p className="text-base italic mb-0">
+              Use the navigation on the right to explore my professional
+              experience.
             </p>
+          </div>
+          <div>
+            <h2 className="thick-underline">Demonstrated Skills</h2>
+            <Skillbadge>
+              Strategic Leadership, Agile Execution & Prioritization,
+              Cross-Functional Collaboration, Project Management, User-Centered
+              Thinking & Research, Business & Outcomes Driven, Data Analytics,
+              GTM Research
+            </Skillbadge>
+          </div>
+
+          <div className="mt-8">
+            <CareerTimeline />
           </div>
 
           <div>
             <h2 className="thick-underline">Education</h2>
-            <h3>Masters of Business Administration, 2017</h3>
-            <p className="text-lg">Southern New Hampshire University</p>
-            <h3>Bachelors of Arts, Film and Media, 2015</h3>
-            <p>University of California, Santa Barbara</p>
+            <h4>Certificate, Full Stack Web Development, 2020</h4>
+            <p className="text-sm">
+              University of California, Los Angeles — Extension
+            </p>
+
+            <h4>Masters of Business Administration, 2017</h4>
+            <p className="text-sm">Southern New Hampshire University</p>
+
+            <h4>Bachelors of Arts, Film and Media, 2012</h4>
+            <p className="text-sm">University of California, Santa Barbara</p>
           </div>
 
-          <h3 className="thick-underline">Skills</h3>
-          <Skillbadge>
-            Salesforce,
-            Marketo
-          </Skillbadge>
+          <div>
+            <h2 className="thick-underline">Interests</h2>
+            <h4>
+              <a
+                href="https://prettylittlepoppy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-underline"
+              >
+                Pretty Little Poppy Marketplace — Antelope Valley, CA
+              </a>
+            </h4>
+            <ul className="text-sm">
+              <li>Community Growth Initiatives</li>
+              <li>Youth Entrepreneurship Mentorship</li>
+              <li>Enabling Local Retail Innovation</li>
+            </ul>
+
+            <h4>Mammotome&apos;s Women & Friends</h4>
+            <ul className="text-sm">
+              <li>Communications Chair</li>
+              <li>Empower Women in the Workplace</li>
+              <li>Build Ally Networks</li>
+            </ul>
+          </div>
         </>
       ),
     },
-    experience: {
+    mammotome: {
       title: 'Mammotome',
       subtitle: '⸺ Manager, Digital Marketing Operations',
       content: (
@@ -56,17 +96,19 @@ export default function CV({ globalData }) {
               experiences to pipeline growth year over year.
             </p>
 
+            <h3>About the Company</h3>
+            <p className="text-base">
+              At Mammotome, we are committed to providing best-in-class
+              technology to help clinicians accurately diagnose breast cancer.
+              Never forgetting that at the heart of each breast cancer diagnosis
+              is the patient.
+            </p>
+
             <div className="mt-6">
+              <h3>Technical Skills</h3>
               <Skillbadge>
-                Salesforce,
-                Marketo,
-                AEM.Live,
-                Marketo Measure,
-                Tableau,
-                UX Optimization,
-                HTML, CSS, JavaScript,
-                Adobe Creative Cloud,
-                SEM,
+                Salesforce, Marketo, AEM.Live, Marketo Measure, Tableau, UX
+                Optimization, HTML, CSS, JavaScript, Adobe Creative Cloud, SEM,
                 Google AdWords
               </Skillbadge>
             </div>
@@ -74,7 +116,7 @@ export default function CV({ globalData }) {
         </div>
       ),
     },
-    skills: {
+    granville: {
       title: 'Granville Homes',
       subtitle: '⸺ Marketing Automation Lead',
       content: (
@@ -82,29 +124,32 @@ export default function CV({ globalData }) {
           <div>
             <h3 className="date-heading">August 2019 - November 2020</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              As a core member of an award-winning marketing team, I led email
-              marketing campaigns, drove web content initiatives, and CRM
-              analytics to drive demand and customer engagement. I also led the
-              migration into Pardot and Salesforce to deliver more visibility on
-              attribution and optimize campaigns for improved lead quality.
+              I led email marketing campaigns and strategized web content
+              initiatives to drive demand and customer engagement. I also led
+              the migration into Pardot and Salesforce to deliver more
+              visibility on attribution and optimize campaigns for improved lead
+              quality.
+            </p>
+
+            <h3>About the Company</h3>
+            <p className="text-base">
+              GV Homes is a homebuilder based in the greater San Joaquin Valley,
+              specializing in a wide range of quality homes from affordable to
+              luxury within Frenso, CA.
             </p>
 
             <div className="mt-6">
+              <h3>Technical Skills</h3>
               <Skillbadge>
-                Salesforce,
-                Pardot,
-                Wordpress,
-                ActiveCampaign,
-                Email Marketing & Coding like it&apos;s 1999,
-                Lasso CRM,
-                GTM Research
+                Wordpress, ActiveCampaign, Email Marketing & Coding like
+                it&apos;s 1999, Salesforce, Pardot, Lasso CRM, GTM Research
               </Skillbadge>
             </div>
           </div>
         </div>
       ),
     },
-    education: {
+    vivre: {
       title: `Vivre d'Amour`,
       subtitle: '⸺ Manager, Marketing Operations',
       content: (
@@ -112,24 +157,31 @@ export default function CV({ globalData }) {
           <div>
             <h3 className="date-heading">July 2014 - November 2019</h3>
             <p>
-              As founder of an award-winning photography brand, I scaled the
-              business through digital-first marketing strategies that tripled
-              inquiries and drove a 42% revenue increase within one year. I
-              built campaigns across SEO, social, and web, consistently
-              achieving top rankings for competitive keywords and securing
-              features in national publications. By applying consumer insights
-              and growth trends, I created a differentiated brand experience
-              that earned over 11 industry awards and national recognition.
+              In 2016, I scaled the business through digital-first marketing
+              strategies that tripled inquiries and drove a 42% revenue increase
+              within one year. I built campaigns across SEO, social, and web,
+              consistently achieving top rankings for competitive keywords and
+              securing features in national publications. By applying consumer
+              insights and growth trends, I created a brand experience that
+              earned multiple industry awards and national recognition. In a few
+              short years, I photographed over 100 weddings.
             </p>
           </div>
+
+          <h3>About the Company</h3>
+          <p className="text-base">
+            I started Krizel Photography (now Vivre d&apos;Amour) in 2014 to
+            develop my marketing and business administration skills while
+            enrolled in my MBA program. This learning journey turned into a
+            flourishing award-winning business, where I photographed couples all
+            over California.
+          </p>
+
           <div className="mt-6">
+            <h3>Technical Skills</h3>
             <Skillbadge>
-              Google Analytics,
-              SEM,
-              Wordpress,
-              Adobe Creative Cloud,
-              Social Media Marketing,
-              Business Development
+              Google Analytics, SEM, Wordpress, Adobe Creative Cloud, Social
+              Media Marketing, Business Development
             </Skillbadge>
           </div>
         </div>
@@ -140,6 +192,8 @@ export default function CV({ globalData }) {
       subtitle: '⸺ Digital Marketing Lead',
       content: (
         <div className="space-y-6">
+          <h3 className="date-heading">February 2016 - January 2017</h3>
+
           <p>
             I led digital strategy for a multi-division foodservice distributor,
             spearheading the first corporate website launch and building SEO and
@@ -151,24 +205,30 @@ export default function CV({ globalData }) {
             channels across the company&apos;s portfolio.
           </p>
 
+          <h3>About the Company</h3>
+          <p className="text-base">
+            JD Food is a Fresno based foodservice distributor with over 150
+            employees, servicing the greater Central Valley area and Central
+            Coast.
+          </p>
+
           <div className="mt-6">
+            <h3>Technical Skills</h3>
             <Skillbadge>
-              Google Analytics,
-              SEM,
-              Wordpress,
-              Adobe Creative Cloud,
-              Social Media Marketing,
-              Brand Development
+              Google Analytics, SEM, Wordpress, Adobe Creative Cloud, Social
+              Media Marketing, Brand Development
             </Skillbadge>
           </div>
         </div>
       ),
     },
-    InterVarsity: {
+    intervarsity: {
       title: 'InterVarsity',
       subtitle: '⸺ Manager, Communications & Events',
       content: (
         <div className="space-y-6">
+          <h3 className="date-heading">June 2010 - July 2015</h3>
+
           <p>
             I directed multi-channel communications and campaigns for a regional
             nonprofit, growing chapter engagement by 36% in one year and scaling
@@ -180,12 +240,19 @@ export default function CV({ globalData }) {
             impact.
           </p>
 
+          <h3>About the Company</h3>
+          <p className="text-base">
+            InterVarsity is a non-profit organization whose purpose is to
+            establish and advance at colleges and universities by providing
+            spiritual and relational support and development to college students
+            and faculty. Its mission is to see students and faculty transformed,
+            campuses renewed, and world changers developed.
+          </p>
           <div className="mt-6">
+            <h3>Technical Skills</h3>
             <Skillbadge>
-              MailChimp,
-              Social Media Marketing,
-              Event Marketing,
-              Leadership Development
+              MailChimp, Social Media Marketing, Event Marketing, Leadership
+              Development
             </Skillbadge>
           </div>
         </div>

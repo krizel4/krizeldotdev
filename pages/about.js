@@ -4,13 +4,14 @@ import { getGlobalData } from '../utils/global-data';
 import Image from 'next/image';
 import Skillbadge from '../components/Skillbadge';
 
+
 export default function About({ globalData }) {
   return (
     <Layout>
       <SEO title="About" description="About Krizel Minnema" />
       <main className="w-full">
-        <h1 className="page-title-md text-left">About Me</h1>
-
+        <h1 className="text-5xl page-title-md text-left">About</h1>
+        <h2 clasName="text-2xl">Hi, I&apos;m Krizel</h2>
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Content - Left Side */}
           <div className="flex-1">
