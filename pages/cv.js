@@ -21,7 +21,7 @@ export default function CV({ globalData }) {
             </p>
           </div>
           <div>
-            <h2 className="thick-underline">Demonstrated Skills</h2>
+            <h2 className="thick-underline">Strengths in Practice</h2>
             <Skillbadge>
               Strategic Leadership, Agile Execution & Prioritization,
               Cross-Functional Collaboration, Project Management, User-Centered
