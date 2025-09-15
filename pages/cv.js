@@ -16,40 +16,38 @@ export default function CV({ globalData }) {
 
   const sections = {
     overview: {
-      title: 'Experience',
+      title: '',
       subtitle: '',
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4 text-serif">
-              Degree in Brand Communications
-            </h3>
+            <h2>Education</h2>
+            <h3>Masters of Business Administration, 2017</h3>
+            <p className="text-lg">Southern New Hampshire University</p>
+            <h3>Bachelors of Arts, Film and Media, 2015</h3>
+            <p>University of California, Santa Barbara</p>
+          </div>
+          <div
+            className="bg-gray-900 dark:bg-gray-100 opacity-10"
+            style={{
+              height: '1rem',
+              margin: '0',
+            }}
+          ></div>
+          <div>
+            <h2>Skills</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              15 years experience in Digital Design, Web Development, Advertising and Product Development
-            </p>
-            
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Within those 15 years, I have:
-            </p>
-            
-            <div className="space-y-2 mb-8">
-              <p className="text-gray-600 dark:text-gray-300">- 12 years experience in Web Design</p>
-              <p className="text-gray-600 dark:text-gray-300">- 10 years experience in Software Design</p>
-              <p className="text-gray-600 dark:text-gray-300">- 3 years experience in Front-end Web Development</p>
-              <p className="text-gray-600 dark:text-gray-300">- 5 years experience in Webflow Development</p>
-              <p className="text-gray-600 dark:text-gray-300">- 1 year experience in Framer Development</p>
-              <p className="text-gray-600 dark:text-gray-300">- 4 years experience in Product Management</p>
-            </div>
-            
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4 text-serif">
-              Skills
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              UI/UX Design / Strategy / Product Management / User Research / Agile Methodologies / 
-              Collaboration / Design Sprints / Design Systems / HTML and CSS / CMS Design & Architecture / 
-              Webflow Development / Framer Development / Photography / Graphic Design
+              15 years experience in Digital Marketing
             </p>
           </div>
+
+          <h3>Skills</h3>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            UI/UX Design / Strategy / Product Management / User Research / Agile
+            Methodologies / Collaboration / Design Sprints / Design Systems /
+            HTML and CSS / CMS Design & Architecture / Webflow Development /
+            Framer Development / Photography / Graphic Design
+          </p>
         </div>
       ),
     },
@@ -59,20 +57,18 @@ export default function CV({ globalData }) {
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="date-heading">
-              November 2020 - Present
-            </h3>
+            <h3 className="date-heading">November 2020 - Present</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               I direct the digital marketing strategy while also serving as the
               primary solutions architect responsible for unifying martech
               systems, Salesforce–Marketo integration health, and end-to-end
-              campaign optimization. I&apos;ve directed major initiatives such as
-              migrating to AEM.Live, implementing Marketo Measure for
+              campaign optimization. I&apos;ve directed major initiatives such
+              as migrating to AEM.Live, implementing Marketo Measure for
               multi-touch attribution, and designing Salesforce flows that
               increased visibility into revenue-driving channels and pipeline
-              impact. With strengths in data analytics, web development, and cross-functional leadership, I focus on scaling
-              global web experiences to pipeline growth
-              year over year.
+              impact. With strengths in data analytics, web development, and
+              cross-functional leadership, I focus on scaling global web
+              experiences to pipeline growth year over year.
             </p>
 
             <div className="mt-6">
@@ -99,9 +95,7 @@ export default function CV({ globalData }) {
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="date-heading">
-              August 2019 - November 2020
-            </h3>
+            <h3 className="date-heading">August 2019 - November 2020</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               As a core member of an award-winning marketing team, I led email
               marketing campaigns, drove web content initiatives, and CRM
@@ -116,7 +110,9 @@ export default function CV({ globalData }) {
                 <SkillBadge>Pardot</SkillBadge>
                 <SkillBadge>Wordpress</SkillBadge>
                 <SkillBadge>ActiveCampaign</SkillBadge>
-                <SkillBadge>Email Marketing & Coding like it&apos;s 1999</SkillBadge>
+                <SkillBadge>
+                  Email Marketing & Coding like it&apos;s 1999
+                </SkillBadge>
                 <SkillBadge>Lasso CRM</SkillBadge>
                 <SkillBadge>GTM Research</SkillBadge>
               </div>
@@ -131,9 +127,7 @@ export default function CV({ globalData }) {
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="date-heading">
-              July 2014 - November 2019
-            </h3>
+            <h3 className="date-heading">July 2014 - November 2019</h3>
             <p>
               As founder of an award-winning photography brand, I scaled the
               business through digital-first marketing strategies that tripled
@@ -233,9 +227,12 @@ export default function CV({ globalData }) {
 
           {/* Right Column - Navigation Links */}
           <div className="space-y-4">
-            <h1 className="page-title">
+            <button
+              onClick={() => setActiveSection('overview')}
+              className="page-title text-left hover:text-gray-700 dark:hover:text-gray-300 transition-colors cursor-pointer border-none bg-transparent p-0"
+            >
               Curriculum Vitae
-            </h1>
+            </button>
             <div className="space-y-6">
               {Object.entries(sections)
                 .filter(([key]) => key !== 'overview')
