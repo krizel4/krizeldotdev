@@ -62,7 +62,7 @@ export default function CareerTimeline() {
           },
           {
             x: 'Apex & SOQL',
-            y: [new Date('2023-09').getTime(), new Date().getTime()],
+            y: [new Date('2023-09').getTime(), new Date('2024-02').getTime()],
             fillColor: '#10B981',
           },
         ],

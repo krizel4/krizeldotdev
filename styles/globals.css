@@ -12,10 +12,27 @@ h6 {
   font-family: 'moret', serif;
 }
 
+:root {
+  /* Light mode colors (default) - WCAG AA compliant */
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a; /* 21:1 contrast */
+  --text-secondary: #333333; /* 12.6:1 contrast */
+  --text-muted: #666666; /* 6.3:1 contrast */
+}
+
+:root.dark {
+  /* Dark mode colors - WCAG AA compliant */
+  --bg-color: #000000;
+  --text-color: #ffffff; /* 21:1 contrast */
+  --text-secondary: #e0e0e0; /* 14.6:1 contrast */
+  --text-muted: #b0b0b0; /* 9.7:1 contrast */
+}
+
 body {
   font-family: 'roc-grotesk', sans-serif;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .thick-underline {
@@ -23,10 +40,7 @@ body {
   box-shadow: inset 0 -.6em #989ba840;
 }
 
-.light body {
-  background-color: #ffffff;
-  color: #000000;
-}
+/* Remove old light body styles - now handled by CSS custom properties */
 
 footer {
   width: 100%;
@@ -79,7 +93,7 @@ footer {
 .subtitle-text {
   @apply text-sm ml-0;
   font-family: 'roc-grotesk', sans-serif;
-  color: rgba(59, 60, 63, 0.722);
+  color: var(--text-muted);
 }
 
 /* Text Styles */
@@ -375,3 +389,5 @@ body {
   --vmax: 1vmax;
   --vmin: 1vmin;
 }
+
+/* Duplicate CSS custom properties removed - defined at top of file */

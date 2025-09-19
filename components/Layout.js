@@ -21,15 +21,12 @@ export default function Layout({ children, showNavigation = true }) {
 
     if (userTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
     } else if (userTheme === 'light') {
       document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
     } else {
-      // Default to dark mode if no theme preference is stored
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-      localStorage.setItem('theme', 'dark');
+      // Default to light mode if no theme preference is stored
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
     return;
   };
@@ -42,10 +39,8 @@ export default function Layout({ children, showNavigation = true }) {
       if (!localStorage.getItem('theme')) {
         if (e.matches) {
           document.documentElement.classList.add('dark');
-          document.documentElement.classList.remove('light');
         } else {
           document.documentElement.classList.remove('dark');
-          document.documentElement.classList.add('light');
         }
       }
     };

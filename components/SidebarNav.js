@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 export default function SidebarNav() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   const navItems = [
     { name: 'HOME', href: '/' },
@@ -19,7 +19,7 @@ export default function SidebarNav() {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
   }, []);
 
@@ -34,10 +34,8 @@ export default function SidebarNav() {
     
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
     }
     
     // Remove transition class after transition completes
