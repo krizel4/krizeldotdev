@@ -62,8 +62,8 @@ export default function Layout({ children, showNavigation = true }) {
   return (
     <div className="flex h-screen overflow-hidden">
       {showNavigation && <SidebarNav />}
-      <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-16' : ''}`}>
-        <div className="flex flex-col items-center max-w-5xl w-full mx-auto px-8 py-8">
+      <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-0 tablet:ml-16' : ''}`}>
+        <div className="flex flex-col items-center max-w-5xl w-full mx-auto px-4 mobile:px-6 tablet:px-8 py-4 mobile:py-6 tablet:py-8">
           {children}
         </div>
       </div>

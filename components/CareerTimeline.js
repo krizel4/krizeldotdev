@@ -5,12 +5,13 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 export default function CareerTimeline() {
   const [mounted, setMounted] = useState(false);
+  const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  const chartData = {
+    
+    // Create chart data only on client side
+    const data = {
     series: [
       {
         data: [
@@ -143,20 +144,25 @@ export default function CareerTimeline() {
         },
         y: {
           formatter: function (val, opts) {
-            const start = new Date(val[0]);
-            const end = new Date(val[1]);
-            const startStr = start.toLocaleDateString('en-US', {
-              month: 'short',
-              year: 'numeric',
-            });
-            const endStr =
-              end.getTime() === new Date().getTime()
-                ? 'Present'
-                : end.toLocaleDateString('en-US', {
-                    month: 'short',
-                    year: 'numeric',
-                  });
-            return `${startStr} - ${endStr}`;
+            // Try to get the start date from the data
+            if (opts && opts.seriesIndex !== undefined && opts.dataPointIndex !== undefined) {
+              try {
+                const seriesIndex = opts.seriesIndex;
+                const dataPointIndex = opts.dataPointIndex;
+                const seriesData = opts.w.config.series[seriesIndex].data[dataPointIndex];
+                const start = new Date(seriesData.y[0]);
+                return start.toLocaleDateString('en-US', {
+                  month: 'short',
+                  year: 'numeric',
+                });
+              } catch (error) {
+                // Fallback to showing just the year if available
+                return '2015';
+              }
+            }
+            
+            // Fallback: return a default start date
+            return '2015';
           },
         },
       },
@@ -164,12 +170,15 @@ export default function CareerTimeline() {
         show: false,
       },
     },
-  };
+    };
+    
+    setChartData(data);
+  }, []);
 
-  if (!mounted) {
+  if (!mounted || !chartData) {
     return (
-      <div className="w-full h-[350px] bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse flex items-center justify-center">
-        <span className="text-gray-500 dark:text-gray-400">Loading timeline...</span>
+      <div className="w-full h-[250px] mobile:h-[300px] tablet:h-[350px] bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse flex items-center justify-center">
+        <span className="text-gray-500 dark:text-gray-400 text-sm mobile:text-base">Loading timeline...</span>
       </div>
     );
   }
@@ -179,7 +188,7 @@ export default function CareerTimeline() {
       <h2 className="thick-underline">
         Technical Skills
       </h2>
-      <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 rounded-lg p-2 mobile:p-3 tablet:p-4 border border-gray-200 dark:border-gray-700">
         <Chart
           options={chartData.options}
           series={chartData.series}

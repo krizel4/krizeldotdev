@@ -79,7 +79,7 @@ footer {
 .subtitle-text {
   @apply text-sm ml-0;
   font-family: 'roc-grotesk', sans-serif;
-  color: rgb(209 213 219);
+  color: rgba(59, 60, 63, 0.722);
 }
 
 /* Text Styles */
@@ -129,4 +129,249 @@ footer {
 .nav-title {
   @apply text-2xl text-gray-700 mb-6 dark:text-white;
   font-family: 'moret', serif;
+}
+
+/* Ensure sidebar stays fixed and functional */
+.sidebar-nav {
+  position: fixed !important;
+  z-index: 10000 !important;
+  transform: translateZ(0);
+  pointer-events: auto !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100vh !important;
+  isolation: isolate;
+  contain: layout style paint;
+}
+
+/* Ensure all sidebar elements are clickable */
+.sidebar-nav a,
+.sidebar-nav button {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10000;
+}
+
+/* Improve icon rendering during theme transitions */
+.sidebar-nav svg {
+  shape-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+  isolation: isolate;
+  position: relative;
+  z-index: 10001;
+}
+
+/* Smooth icon transitions */
+.sidebar-nav button svg {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensure sidebar icons are above content frames */
+.sidebar-nav {
+  isolation: isolate;
+  z-index: 10000 !important;
+}
+
+.sidebar-nav button {
+  isolation: isolate;
+  z-index: 10001 !important;
+  position: relative;
+}
+
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent body scroll and horizontal scroll */
+body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Content Frame */
+.content-frame {
+  position: absolute;
+  min-height: 70vh;
+  top: 13%;
+  left: 0%;
+  width: 70%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 70vh;
+  padding: 0 10%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Mobile content frame adjustments */
+@media (max-width: 768px) {
+  .content-frame {
+    top: 60px; /* Start below mobile nav */
+    max-height: calc(100vh - 60px); /* Account for mobile nav height */
+    padding: 0 4%; /* Reduce horizontal padding on mobile */
+  }
+}
+
+/* Page transition states */
+.content-frame.is-transitioning {
+  pointer-events: none;
+}
+
+.content-frame.is-leaving {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.content-frame.is-entering {
+  opacity: 0;
+  animation: fadeInContent 0.9s ease-out forwards;
+}
+
+/* Hide scrollbar while maintaining scroll functionality */
+.content-frame {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.content-frame::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* CV Layout Styles */
+.cv-layout {
+  min-height: calc(100vh - 200px);
+  align-items: start;
+}
+
+.cv-content-column {
+  position: relative;
+}
+
+.cv-navigation-column {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.cv-navigation-column::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* Mobile adjustments for CV */
+@media (max-width: 768px) {
+  .cv-navigation-column {
+    position: static;
+    max-height: none;
+    margin-top: 2rem;
+  }
+}
+
+/* CV Section Transition Animations */
+.cv-content-column .prose {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.cv-content-column .prose.is-transitioning {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.cv-content-column .prose.is-entering {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cvContentFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes cvContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-up animation for page titles */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Hero header and subheader animations */
+@keyframes heroHeaderSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubheaderSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-header {
+  animation: heroHeaderSlideUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-hero-subheader {
+  animation: heroSubheaderSlideUp 1s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+/* Content fade-in animation */
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive viewport units for better iframe-like behavior */
+:root {
+  --vw: 1vw;
+  --vh: 1vh;
+  --vmax: 1vmax;
+  --vmin: 1vmin;
 }

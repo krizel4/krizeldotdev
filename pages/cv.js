@@ -1,12 +1,65 @@
-import Layout, { GradientBackground } from '../components/Layout';
 import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Skillbadge from '../components/Skillbadge';
 import CareerTimeline from '../components/CareerTimeline';
+import pageTransitionManager from '../utils/page-transitions';
 
 export default function CV({ globalData }) {
   const [activeSection, setActiveSection] = useState('overview');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    // Initialize page transition for this page
+    if (pageTransitionManager) {
+      pageTransitionManager.switchPage('/cv');
+    }
+  }, []);
+
+  const handleSectionChange = async (newSection) => {
+    if (newSection === activeSection || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // Scroll to top of content frame when changing sections
+    const contentFrame = document.querySelector('.content-frame');
+    if (contentFrame) {
+      contentFrame.scrollTop = 0;
+    }
+    
+    // Find the content container (the div with prose class)
+    const contentContainer = document.querySelector('.cv-content-column .prose');
+    if (contentContainer) {
+      // Start transition out
+      contentContainer.classList.add('is-transitioning');
+      
+      // Wait for transition out to complete
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      // Change the section
+      setActiveSection(newSection);
+      
+      // Start transition in
+      contentContainer.classList.remove('is-transitioning');
+      contentContainer.classList.add('is-entering');
+      
+      // Wait for transition in to complete
+      await new Promise(resolve => setTimeout(resolve, 400));
+      
+      // Clean up classes
+      contentContainer.classList.remove('is-entering');
+      
+      // Ensure scroll is at top after transition completes
+      if (contentFrame) {
+        contentFrame.scrollTop = 0;
+      }
+    } else {
+      // Fallback if content container not found
+      setActiveSection(newSection);
+    }
+    
+    setIsTransitioning(false);
+  };
 
   const sections = {
     overview: {
@@ -14,7 +67,7 @@ export default function CV({ globalData }) {
       subtitle: '',
       content: (
         <>
-          <div>
+          <div className="cv-content-frame">
             <p className="text-base italic mb-0">
               Use the navigation on the right to explore my professional
               experience.
@@ -36,15 +89,15 @@ export default function CV({ globalData }) {
 
           <div>
             <h2 className="thick-underline">Education</h2>
-            <h4>Certificate, Full Stack Web Development, 2020</h4>
+            <h4>Certificate, Full Stack Web Development</h4>
             <p className="text-sm">
               University of California, Los Angeles — Extension
             </p>
 
-            <h4>Masters of Business Administration, 2017</h4>
+            <h4>Masters of Business Administration</h4>
             <p className="text-sm">Southern New Hampshire University</p>
 
-            <h4>Bachelors of Arts, Film and Media, 2012</h4>
+            <h4>Bachelors of Arts, Film and Media</h4>
             <p className="text-sm">University of California, Santa Barbara</p>
           </div>
 
@@ -157,24 +210,28 @@ export default function CV({ globalData }) {
           <div>
             <h3 className="date-heading">July 2014 - November 2019</h3>
             <p>
-              In 2016, I scaled the business through digital-first marketing
-              strategies that tripled inquiries and drove a 42% revenue increase
-              within one year. I built campaigns across SEO, social, and web,
-              consistently achieving top rankings for competitive keywords and
-              securing features in national publications. By applying consumer
-              insights and growth trends, I created a brand experience that
-              earned multiple industry awards and national recognition. In a few
-              short years, I photographed over 100 weddings.
+              I launched this side business in 2014 to apply my MBA learnings,
+              scaling it in 2016 through digital-first marketing strategies that
+              tripled inquiries and increased revenue by 42% within one year,
+              allowing me to go full-time in the beginning of 2017. By driving
+              SEO, social, and web campaigns, I achieved top keyword rankings,
+              national publication features, and multiple industry awards,
+              ultimately photographing over 100 weddings.
+              <p>
+               After selling the business in 2019, I transitioned into
+                corporate marketing to continue applying growth and digital
+                strategy at scale.
+              </p>
             </p>
           </div>
 
           <h3>About the Company</h3>
           <p className="text-base">
-            I started Krizel Photography (now Vivre d&apos;Amour) in 2014 to
-            develop my marketing and business administration skills while
-            enrolled in my MBA program. This learning journey turned into a
-            flourishing award-winning business, where I photographed couples all
-            over California.
+            Founded in 2014, Krizel Photography (later rebranded as Vivre
+            d’Amour) grew into an award-winning wedding photography studio
+            serving couples across California. The business gained recognition
+            for its lifestyle approach, national publication features, and
+            consistent client satisfaction, earning multiple industry accolades.
           </p>
 
           <div className="mt-6">
@@ -261,59 +318,115 @@ export default function CV({ globalData }) {
   };
 
   return (
-    <Layout>
-      <SEO title="CV" description="Krizel Minnema's Curriculum Vitae" />
-      <main className="w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Column - Dynamic Content */}
-          <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-8">
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <h2 className="section-title">
-                {sections[activeSection].title}
-              </h2>
-              {sections[activeSection].content}
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative">
+      {/* Background Patterns */}
+      {/* Light mode dithered dot pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none dark:hidden"
+        style={{
+          background: `
+            radial-gradient(circle at 0.5px 0.5px, rgba(0,0,0,0.15) 0.6px, transparent 0),
+            radial-gradient(circle at 1.5px 1.5px, rgba(0,0,0,0.12) 0.4px, transparent 0),
+            radial-gradient(circle at 2.5px 0.5px, rgba(0,0,0,0.1) 0.5px, transparent 0),
+            radial-gradient(circle at 0.5px 2.5px, rgba(0,0,0,0.08) 0.4px, transparent 0),
+            radial-gradient(circle at 1px 1px, rgba(0,0,0,0.06) 0.3px, transparent 0),
+            radial-gradient(circle at 2px 2px, rgba(0,0,0,0.04) 0.3px, transparent 0),
+            radial-gradient(circle at 0px 0px, rgba(0,0,0,0.03) 0.2px, transparent 0),
+            radial-gradient(circle at 3px 3px, rgba(0,0,0,0.02) 0.2px, transparent 0)
+          `,
+          backgroundSize: '3px 3px',
+          opacity: 0.6,
+        }}
+      ></div>
 
-          {/* Right Column - Navigation Links */}
-          <div className="space-y-4">
-            <button
-              onClick={() => setActiveSection('overview')}
-              className="page-title text-left hover:text-gray-700 dark:hover:text-gray-300 transition-colors cursor-pointer border-none bg-transparent p-0"
-            >
-              Curriculum Vitae
-            </button>
-            <div className="space-y-6">
-              {Object.entries(sections)
-                .filter(([key]) => key !== 'overview')
-                .map(([key, section]) => (
-                <div key={key} className="space-y-1">
+      {/* Dark mode dithered dot pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none dark:block hidden"
+        style={{
+          background: `
+            radial-gradient(circle at 0.5px 0.5px, rgba(255,255,255,0.25) 0.6px, transparent 0),
+            radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.18) 0.4px, transparent 0),
+            radial-gradient(circle at 2.5px 0.5px, rgba(255,255,255,0.15) 0.5px, transparent 0),
+            radial-gradient(circle at 0.5px 2.5px, rgba(255,255,255,0.12) 0.4px, transparent 0),
+            radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 0.3px, transparent 0),
+            radial-gradient(circle at 2px 2px, rgba(255,255,255,0.06) 0.3px, transparent 0),
+            radial-gradient(circle at 0px 0px, rgba(255,255,255,0.04) 0.2px, transparent 0),
+            radial-gradient(circle at 3px 3px, rgba(255,255,255,0.03) 0.2px, transparent 0)
+          `,
+          backgroundSize: '3px 3px',
+          opacity: 1,
+          mixBlendMode: 'multiply',
+        }}
+      ></div>
+
+      <SEO title="CV" description="Krizel Minnema's Curriculum Vitae" />
+      
+      {/* Content Frame for iframe-like scrolling */}
+      <div className="content-frame">
+        <main className="w-full">
+          <h1 
+            className="text-4xl mobile:text-5xl tablet:text-6xl laptop:text-7xl font-light text-gray-900 dark:text-gray-100 tracking-tight text-left animate-slide-up"
+            style={{ fontFamily: 'moret, serif' }}
+          >
+            Curriculum Vitae
+          </h1>
+          <div className="cv-layout grid grid-cols-1 tablet:grid-cols-2 gap-8 mobile:gap-12 tablet:gap-16">
+            {/* Left Column - Dynamic Content */}
+            <div className="cv-content-column">
+              <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-4 mobile:p-6 tablet:p-8">
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  <h2 className="section-title">
+                    {sections[activeSection].title}
+                  </h2>
+                  {sections[activeSection].content}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Navigation Links */}
+            <div className="cv-navigation-column">
+              <div className="space-y-6">
+                {/* Curriculum Vitae Overview Button */}
+                <div className="space-y-1">
                   <button
-                    onClick={() => setActiveSection(key)}
+                    onClick={() => handleSectionChange('overview')}
+                    disabled={isTransitioning}
                     className={`nav-button ${
-                      activeSection === key ? 'nav-button-active' : 'nav-button-inactive'
-                    }`}
+                      activeSection === 'overview' ? 'nav-button-active' : 'nav-button-inactive'
+                    } ${isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'}`}
                   >
-                    {section.title}
+                    Curriculum Vitae
                   </button>
                   <p className="subtitle-text">
-                    {section.subtitle || 'Professional Experience'}
+                    Overview & Summary
                   </p>
                 </div>
-              ))}
+                
+                {/* Professional Experience Buttons */}
+                {Object.entries(sections)
+                  .filter(([key]) => key !== 'overview')
+                  .map(([key, section]) => (
+                  <div key={key} className="space-y-1">
+                    <button
+                      onClick={() => handleSectionChange(key)}
+                      disabled={isTransitioning}
+                      className={`nav-button ${
+                        activeSection === key ? 'nav-button-active' : 'nav-button-inactive'
+                      } ${isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'}`}
+                    >
+                      {section.title}
+                    </button>
+                    <p className="subtitle-text">
+                      {section.subtitle || 'Professional Experience'}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-      <GradientBackground
-        variant="large"
-        className="fixed top-0 opacity-40 dark:opacity-60"
-      />
-      <GradientBackground
-        variant="small"
-        className="absolute bottom-0 opacity-20 dark:opacity-10"
-      />
-    </Layout>
+        </main>
+      </div>
+    </div>
   );
 }
 

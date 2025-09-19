@@ -1,15 +1,18 @@
 import '../styles/globals.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import { ThemeProvider } from '../contexts/ThemeContext';
-// import localFont from '../styles'
-
-// const myFont = localFont({ src: './roc-grotesk/font.woff' })
+import PageTransition from '../components/PageTransition';
+import SidebarNav from '../components/SidebarNav';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <span className="theme-bejamas" />
-      <Component {...pageProps} />
+      {/* Sidebar outside of animated container */}
+      <SidebarNav />
+      <PageTransition>
+        <Component {...pageProps} />
+      </PageTransition>
     </ThemeProvider>
   );
 }

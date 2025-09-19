@@ -72,20 +72,20 @@ const ThemeSwitcher = () => {
 
 export default function Footer({ copyrightText }) {
   return (
-    <footer className="py-12 bg-gray-100 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex flex-col lg:flex-row justify-between items-center">
+    <footer className="py-8 mobile:py-10 tablet:py-12 bg-gray-100 dark:bg-gray-800">
+      <div className="max-w-7xl mx-auto px-4 mobile:px-6 tablet:px-8">
+        <div className="flex flex-col tablet:flex-row justify-between items-center">
           {/* Left side - Copyright and Theme Toggle */}
-          <div className="flex flex-col items-center lg:items-start">
-            <p className="text-gray-600 dark:text-gray-400 uppercase text-sm font-medium mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
+          <div className="flex flex-col items-center tablet:items-start">
+            <p className="text-gray-600 dark:text-gray-400 uppercase text-xs mobile:text-sm font-medium mb-3 mobile:mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
               {copyrightText}
             </p>
             <ThemeSwitcher />
           </div>
           
           {/* Right side - Contact Information and Social Links */}
-          <div className="mt-8 lg:mt-0 flex flex-col items-center lg:items-end">
-            <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
+          <div className="mt-6 mobile:mt-8 tablet:mt-0 flex flex-col items-center tablet:items-end">
+            <div className="space-y-1 text-xs mobile:text-sm text-gray-600 dark:text-gray-400 mb-3 mobile:mb-4" style={{ fontFamily: 'roc-grotesk, sans-serif' }}>
               <p>
                 <a href="mailto:hello@krizel.dev" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
                   hello@krizel.dev
@@ -100,14 +100,14 @@ export default function Footer({ copyrightText }) {
             </div>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 mobile:space-x-4">
               <a
                 href="https://linkedin.com/in/krizelminnema"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4 mobile:w-5 mobile:h-5" />
               </a>
               <a
                 href="https://github.com/krizelminnema"
@@ -115,7 +115,7 @@ export default function Footer({ copyrightText }) {
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4 mobile:w-5 mobile:h-5" />
               </a>
             </div>
           </div>

@@ -16,8 +16,8 @@ Personal CV and Blog
 
 ### 🎨 Styling & UI
 - [Tailwind](https://tailwindcss.com/) v3.0
-- [Framer Motion](https://www.npmjs.com/package/framer-motion)
 - [ApexCharts](https://apexcharts.com/)
+- [Framer Motion](https://www.npmjs.com/package/framer-motion)
 - Base Build Started from [Bejamas Next.js Blog Theme](https://github.com/netlify-templates/nextjs-blog-theme)
 
 ### 📝Content Management
