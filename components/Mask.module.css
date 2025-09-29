@@ -1,0 +1,60 @@
+.maskWrapper {
+  position: relative;
+  display: block;
+  isolation: isolate;
+}
+
+.svgDefs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.maskContent {
+  /* Use the SVG mask via mask property. The --mask-id variable is set inline by the component. */
+  -webkit-mask: var(--mask-id);
+  mask: var(--mask-id);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  /* ensure pointer events don't get blocked for interactive children */
+  pointer-events: auto;
+}
+
+/* Fallback for browsers without mask support: use clip-path from the same shape */
+@supports not (mask: url(#none)) {
+  .maskContent {
+    clip-path: inset(5% 5% 5% 5% round 6%);
+  }
+}
+
+.maskTopBottom {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.maskTopBottom::before,
+.maskTopBottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--pad, 48px);
+  background-color: var(--bg-color, #fff);
+  transition: background-color 0.3s ease;
+  opacity: 0.95;
+}
+
+.maskTopBottom::before {
+  top: 0;
+}
+
+.maskTopBottom::after {
+  bottom: 0;
+}

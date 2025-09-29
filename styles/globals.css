@@ -214,7 +214,7 @@ body {
   min-height: 70vh;
   top: 13%;
   left: 0%;
-  width: 70%;
+  width: 90%;
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 70vh;
@@ -391,3 +391,49 @@ body {
 }
 
 /* Duplicate CSS custom properties removed - defined at top of file */
+
+/* Mask utilities and defaults
+:root {
+  --pad: 48px;
+  --mask-fallback-bg: var(--bg-color);
+}
+
+// helper to visually hide decorative masks from assistive tech
+[aria-hidden="true"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+// Utility: apply a mask frame to any block element using inline SVG mask (see components/Mask)
+.mask-frame {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+// Utility: top-bottom mask bar used as an overlay
+.mask-top-bottom {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mask-top-bottom::before,
+.mask-top-bottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--pad);
+  background-color: var(--mask-fallback-bg);
+  transition: background-color 0.3s ease;
+  opacity: 0.95;
+}
+
+.mask-top-bottom::before { top: 0 }
+.mask-top-bottom::after { bottom: 0 }
+*/
