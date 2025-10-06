@@ -17,7 +17,7 @@ exports.COLOR_THEMES = {
       'gradient-4': '#b8acd1',
     },
   },
-  bejamas: {
+  krizel: {
     colors: {
       primary: '#FF8585',
       'gradient-1': '#7d7aff',

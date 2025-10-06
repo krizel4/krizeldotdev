@@ -13,19 +13,17 @@ h6 {
 }
 
 :root {
-  /* Light mode colors (default) - WCAG AA compliant */
   --bg-color: #ffffff;
-  --text-color: #1a1a1a; /* 21:1 contrast */
-  --text-secondary: #333333; /* 12.6:1 contrast */
-  --text-muted: #666666; /* 6.3:1 contrast */
+  --text-color: #1a1a1a; 
+  --text-secondary: #333333; 
+  --text-muted: #666666; 
 }
 
 :root.dark {
-  /* Dark mode colors - WCAG AA compliant */
   --bg-color: #000000;
-  --text-color: #ffffff; /* 21:1 contrast */
-  --text-secondary: #e0e0e0; /* 14.6:1 contrast */
-  --text-muted: #b0b0b0; /* 9.7:1 contrast */
+  --text-color: #ffffff; 
+  --text-secondary: #e0e0e0; 
+  --text-muted: #b0b0b0; 
 }
 
 body {
@@ -40,13 +38,10 @@ body {
   box-shadow: inset 0 -.6em #989ba840;
 }
 
-/* Remove old light body styles - now handled by CSS custom properties */
-
 footer {
   width: 100%;
 }
 
-/* Reusable Component Styles */
 .skill-badge {
   @apply px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs font-medium;
   font-family: 'roc-grotesk', sans-serif;
@@ -196,67 +191,22 @@ footer {
   position: relative;
 }
 
-
-/* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
 }
 
-/* Prevent body scroll and horizontal scroll */
-body {
-  overflow: hidden;
-  height: 100vh;
-}
-
-/* Content Frame */
 .content-frame {
-  position: absolute;
-  min-height: 70vh;
-  top: 13%;
-  left: 0%;
   width: 90%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 70vh;
-  padding: 0 10%;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  padding: 5% 10%;
   z-index: 1;
-  isolation: isolate;
 }
 
-/* Mobile content frame adjustments */
 @media (max-width: 768px) {
   .content-frame {
-    top: 60px; /* Start below mobile nav */
-    max-height: calc(100vh - 60px); /* Account for mobile nav height */
-    padding: 0 4%; /* Reduce horizontal padding on mobile */
+    top: 60px; 
+    max-height: calc(100vh - 60px); 
+    padding: 0 4%; 
   }
-}
-
-/* Page transition states */
-.content-frame.is-transitioning {
-  pointer-events: none;
-}
-
-.content-frame.is-leaving {
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-.content-frame.is-entering {
-  opacity: 0;
-  animation: fadeInContent 0.9s ease-out forwards;
-}
-
-/* Hide scrollbar while maintaining scroll functionality */
-.content-frame {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.content-frame::-webkit-scrollbar {
-  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 }
 
 /* CV Layout Styles */
@@ -381,59 +331,3 @@ body {
     opacity: 1;
   }
 }
-
-/* Responsive viewport units for better iframe-like behavior */
-:root {
-  --vw: 1vw;
-  --vh: 1vh;
-  --vmax: 1vmax;
-  --vmin: 1vmin;
-}
-
-/* Duplicate CSS custom properties removed - defined at top of file */
-
-/* Mask utilities and defaults
-:root {
-  --pad: 48px;
-  --mask-fallback-bg: var(--bg-color);
-}
-
-// helper to visually hide decorative masks from assistive tech
-[aria-hidden="true"] {
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-// Utility: apply a mask frame to any block element using inline SVG mask (see components/Mask)
-.mask-frame {
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-}
-
-// Utility: top-bottom mask bar used as an overlay
-.mask-top-bottom {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.mask-top-bottom::before,
-.mask-top-bottom::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: var(--pad);
-  background-color: var(--mask-fallback-bg);
-  transition: background-color 0.3s ease;
-  opacity: 0.95;
-}
-
-.mask-top-bottom::before { top: 0 }
-.mask-top-bottom::after { bottom: 0 }
-*/

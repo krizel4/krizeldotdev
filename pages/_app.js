@@ -7,7 +7,7 @@ import SidebarNav from '../components/SidebarNav';
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <span className="theme-bejamas" />
+      <span className="theme-krizel" />
       {/* Sidebar outside of animated container */}
       <SidebarNav />
       <PageTransition>

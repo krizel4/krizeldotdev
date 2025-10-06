@@ -21,6 +21,12 @@ export default function CV({ globalData }) {
     
     setIsTransitioning(true);
     
+    // Scroll to top of content frame when changing sections
+    const contentFrame = document.querySelector('.content-frame');
+    if (contentFrame) {
+      contentFrame.scrollTop = 0;
+    }
+    
     // Find the content container (the div with prose class)
     const contentContainer = document.querySelector('.cv-content-column .prose');
     if (contentContainer) {
@@ -42,26 +48,14 @@ export default function CV({ globalData }) {
       
       // Clean up classes
       contentContainer.classList.remove('is-entering');
+      
+      // Ensure scroll is at top after transition completes
+      if (contentFrame) {
+        contentFrame.scrollTop = 0;
+      }
     } else {
       // Fallback if content container not found
       setActiveSection(newSection);
-    }
-    
-    // Scroll to top of the page content after section change
-    // This ensures that when users are scrolled down and click a nav link,
-    // they are taken to the top of the new content
-    const mainContent = document.querySelector('main');
-    if (mainContent) {
-      mainContent.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
-    } else {
-      // Fallback to window scroll
-      window.scrollTo({ 
-        top: 0, 
-        behavior: 'smooth' 
-      });
     }
     
     setIsTransitioning(false);
@@ -234,7 +228,7 @@ export default function CV({ globalData }) {
           <h3>About the Company</h3>
           <p className="text-base">
             Founded in 2014, Krizel Photography (later rebranded as Vivre
-            d&apos;Amour) grew into an award-winning wedding photography studio
+            d’Amour) grew into an award-winning wedding photography studio
             serving couples across California. The business gained recognition
             for its lifestyle approach, national publication features, and
             consistent client satisfaction, earning multiple industry accolades.
@@ -367,7 +361,7 @@ export default function CV({ globalData }) {
 
       <SEO title="CV" description="Krizel Minnema's Curriculum Vitae" />
       
-      {/* Content Frame for iframe-like scrolling */}
+      {/* Content Frame for iframe-like scrolling */
       <div className="content-frame">
         <main className="w-full">
           <h1 

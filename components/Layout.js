@@ -58,8 +58,24 @@ export default function Layout({ children, showNavigation = true }) {
     <div className="flex h-screen overflow-hidden">
       {showNavigation && <SidebarNav />}
       <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-0 tablet:ml-16' : ''}`}>
+        {/* Top Double Line */}
+        <div className="w-full flex justify-center pt-8 pb-4">
+          <div className="w-32">
+            <div className="border-t border-white" style={{ borderWidth: '1px' }}></div>
+            <div className="border-t border-white mt-1" style={{ borderWidth: '1px' }}></div>
+          </div>
+        </div>
+        
         <div className="flex flex-col items-center max-w-5xl w-full mx-auto px-4 mobile:px-6 tablet:px-8 py-4 mobile:py-6 tablet:py-8">
           {children}
+        </div>
+        
+        {/* Bottom Double Line */}
+        <div className="w-full flex justify-center pt-4 pb-8">
+          <div className="w-32">
+            <div className="border-t border-white" style={{ borderWidth: '1px' }}></div>
+            <div className="border-t border-white mt-1" style={{ borderWidth: '1px' }}></div>
+          </div>
         </div>
       </div>
     </div>
