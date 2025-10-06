@@ -2,11 +2,8 @@ export default function Hero({ globalData }) {
   return (
 
         <div className="max-w-4xl">
-          <div className="p-4">
-            <h1
-              className="text-4xl mobile:text-5xl tablet:text-6xl laptop:text-7xl font-light text-gray-900 dark:text-gray-100 tracking-tight animate-hero-header"
-              style={{ fontFamily: 'moret, serif' }}
-            >
+          <div className="p-4 mt-12">
+            <h1>
               {globalData.name}
             </h1>
             <p

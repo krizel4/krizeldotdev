@@ -137,34 +137,7 @@ export default function CareerTimeline() {
         position: 'back',
       },
       tooltip: {
-        enabled: true,
-        theme: 'dark',
-        x: {
-          format: 'MMM yyyy',
-        },
-        y: {
-          formatter: function (val, opts) {
-            // Try to get the start date from the data
-            if (opts && opts.seriesIndex !== undefined && opts.dataPointIndex !== undefined) {
-              try {
-                const seriesIndex = opts.seriesIndex;
-                const dataPointIndex = opts.dataPointIndex;
-                const seriesData = opts.w.config.series[seriesIndex].data[dataPointIndex];
-                const start = new Date(seriesData.y[0]);
-                return start.toLocaleDateString('en-US', {
-                  month: 'short',
-                  year: 'numeric',
-                });
-              } catch (error) {
-                // Fallback to showing just the year if available
-                return '2015';
-              }
-            }
-            
-            // Fallback: return a default start date
-            return '2015';
-          },
-        },
+        enabled: false,
       },
       legend: {
         show: false,

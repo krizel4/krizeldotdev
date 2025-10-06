@@ -8,7 +8,6 @@ import pageTransitionManager from '../utils/page-transitions';
 
 export default function About({ globalData }) {
   useEffect(() => {
-    // Initialize page transition for this page
     if (pageTransitionManager) {
       pageTransitionManager.switchPage('/about');
     }
@@ -57,39 +56,39 @@ export default function About({ globalData }) {
       ></div>
 
       <SEO title="About" description="About Krizel Minnema" />
-      
-      {/* Content Frame for iframe-like scrolling */}
+
       <div className="content-frame">
         <main>
-          <h1 
-            className="text-4xl mobile:text-5xl tablet:text-6xl laptop:text-7xl font-light text-gray-900 dark:text-gray-100 tracking-tight text-left animate-slide-up"
-            style={{ fontFamily: 'moret, serif' }}
-          >
-            About
-          </h1>
-          <h2>Hi, I&apos;m Krizel</h2>
-          <div className="flex tablet:flex-row gap-6 mobile:gap-8 tablet:gap-12 w-xs">
+          <div className="flex flex-row gap-6 mobile:gap-8 tablet:gap-12 w-xs">
             {/* Content - Left Side */}
             <div className="flex-1">
+              <h1
+                className="animate-slide-up"
+                style={{ fontFamily: 'moret, serif' }}
+              >
+                About
+              </h1>
+              <h2>
+                Hi, I&apos;m Krizel (krĭ-&apos;zel). </h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="prose-text">
                   When I was a little girl, I convinced my cousins that to make
-                  perfume, you had to mix rubbing alcohol and flowers. &quot;Just
-                  mash them up in a jar and magic.&quot; I took it a step further
-                  and I asked them to help me sell jars of this stuff to
-                  neighbors. And the neighbors would buy it! After all, who&apos;d
-                  say no to a bunch of little kids hustling to make a dime so they
-                  can buy candy? It didn&apos;t matter that our perfume probably
-                  made them smell like a hospital clinic; it was what that
-                  purchase meant to my neighbor and what that purchase meant to
-                  us. What I love about marketing is the power to communicate
-                  value. Marketing is about uncovering great stories worth sharing
-                  and delivering experiences and products that matter. With the
-                  internet, you can spread powerful missions like wildfire.
-                  That&apos;s why I love digital marketing, tech and all things
-                  internet.
+                  perfume, you had to mix rubbing alcohol and flowers.
+                  &quot;Just mash them up in a jar and magic.&quot; I took it a
+                  step further and I asked them to help me sell jars of this
+                  stuff to neighbors. And the neighbors would buy it! After all,
+                  who&apos;d say no to a bunch of little kids hustling to make a
+                  dime so they can buy candy? It didn&apos;t matter that our
+                  perfume probably made them smell like a hospital clinic; it
+                  was what that purchase meant to my neighbor and what that
+                  purchase meant to us. What I love about marketing is the power
+                  to communicate value. Marketing is about uncovering great
+                  stories worth sharing and delivering experiences and products
+                  that matter. With the internet, you can spread powerful
+                  missions like wildfire. That&apos;s why I love digital
+                  marketing, tech and all things internet.
                 </p>
-                <p>
+                <p className="font-bold">
                   My core, technical competencies include a wide breadth of
                   solutions, including martech systems architecture, business
                   intelligence and full stack web development.
@@ -97,9 +96,9 @@ export default function About({ globalData }) {
                 <p>
                   At the end of the day, what gives me the most excitement is
                   problem solving, whether that&apos;s figuring out how to close
-                  gaps in KPIs or optimize campaigns and its delivery. I work well
-                  as a project manager and team collaborator to improve ROI and
-                  workflow efficiency.
+                  gaps in KPIs or optimize campaigns and its delivery. I work
+                  well as a project manager and team collaborator to improve ROI
+                  and workflow efficiency.
                 </p>
                 <p>
                   When I&apos;m not working, I love to learn new things like
@@ -121,18 +120,15 @@ export default function About({ globalData }) {
             </div>
 
             {/* Image - Right Side */}
-            <div className="flex-shrink-0 tablet:w-1/3">
-              <div className="relative w-full h-80 mobile:h-96 tablet:h-[500px] rounded-lg overflow-hidden">
+            {/* <div className="profile-image">
                 <Image
                   src="/profile-image.png"
                   alt="Krizel Minnema"
-                  width={400}
-                  height={500}
-                  className="object-cover"
+                  width={275}
+                  height={350}
                   priority
                 />
-              </div>
-            </div>
+            </div> */}
           </div>
         </main>
       </div>

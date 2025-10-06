@@ -43,12 +43,12 @@ footer {
 }
 
 .skill-badge {
-  @apply px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs font-medium;
+  @apply px-3 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-700;
   font-family: 'roc-grotesk', sans-serif;
 }
 
 .skill-badge-lg {
-  @apply px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium;
+  @apply px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-700;
   font-family: 'roc-grotesk', sans-serif;
 }
 
@@ -92,6 +92,25 @@ footer {
 }
 
 /* Text Styles */
+
+h1 {
+  font-size: 100px;
+  margin-bottom: 7%;
+}
+
+h2 {
+  font-size: 50px;
+  margin-bottom: 3%;
+}
+
+h3 {
+  font-family: 'moret', sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 30px;
+}
+
 .text-serif {
   font-family: 'moret', serif;
 }

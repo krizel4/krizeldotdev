@@ -58,11 +58,8 @@ export default function Contact({ globalData }) {
       {/* Content Frame for iframe-like scrolling */}
       <div className="content-frame">
         <main className="w-full">
-          <h1 
-            className="text-4xl mobile:text-5xl tablet:text-6xl laptop:text-7xl font-light text-gray-900 dark:text-gray-100 tracking-tight text-left animate-slide-up"
-            style={{ fontFamily: 'moret, serif' }}
-          >
-            Let&apos;s Connect
+          <h1>
+            Hello.
           </h1>
           <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-4 mobile:p-6 tablet:p-8">
             <div className="prose prose-lg dark:prose-invert max-w-none">
