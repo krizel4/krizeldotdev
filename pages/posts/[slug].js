@@ -16,15 +16,9 @@ import Header from '../../components/Header';
 import SEO from '../../components/SEO';
 import pageTransitionManager from '../../utils/page-transitions';
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
+
 const components = {
   a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
   Head,
 };
 
@@ -36,8 +30,7 @@ export default function PostPage({
   globalData,
 }) {
   useEffect(() => {
-    // Initialize page transition for this page
-    if (pageTransitionManager) {
+   if (pageTransitionManager) {
       pageTransitionManager.switchPage(`/posts/${frontMatter.slug || 'post'}`);
     }
   }, [frontMatter.slug]);
@@ -91,13 +84,9 @@ export default function PostPage({
       
       {/* Content Frame for iframe-like scrolling */}
       <div className="content-frame">
-        <Header name={globalData.name} />
         <article className="px-6 md:px-0">
           <header>
-            <h1 
-              className="text-4xl mobile:text-5xl tablet:text-6xl laptop:text-7xl font-light text-gray-900 dark:text-gray-100 tracking-tight text-center mb-12 animate-slide-up"
-              style={{ fontFamily: 'moret, serif' }}
-            >
+            <h1>
               {frontMatter.title}
             </h1>
             {frontMatter.description && (
@@ -130,7 +119,6 @@ export default function PostPage({
             )}
           </div>
         </article>
-        <Footer copyrightText={globalData.footerText} />
       </div>
     </div>
   );
