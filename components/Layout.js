@@ -57,7 +57,7 @@ export default function Layout({ children, showNavigation = true }) {
   return (
     <div className="flex h-screen overflow-hidden">
       {showNavigation && <SidebarNav />}
-      <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-0 tablet:ml-16 pt-16 tablet:pt-0' : ''}`}>
+      <div className={`flex-1 overflow-y-auto ${showNavigation ? 'ml-0 tablet:ml-16 pt-20 tablet:pt-0' : ''}`}>
         {/* Top Double Line */}
         <div className="w-full flex justify-center pt-6 mobile:pt-8 tablet:pt-12 pb-2 mobile:pb-4 tablet:pb-6">
           <div className="w-20 mobile:w-24 tablet:w-32">

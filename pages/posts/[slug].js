@@ -90,7 +90,7 @@ export default function PostPage({
               {frontMatter.title}
             </h1>
             {frontMatter.description && (
-              <p className="post-description">{frontMatter.description}</p>
+              <h2 className="post-description">{frontMatter.description}</h2>
             )}
           </header>
           <main>
@@ -143,9 +143,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const paths = postFilePaths
-    // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
     .map((slug) => ({ params: { slug } }));
 
   return {

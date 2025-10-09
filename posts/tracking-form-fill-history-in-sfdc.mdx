@@ -1,0 +1,40 @@
+---
+title: Tracking Form Fill History in Salesforce
+description: How to Capture Every UTM and Form Interaction for Better Attribution
+---
+
+When it comes to multi-touch attribution and campaign reporting and attribution, having a clear record of every form fill is essential. Ideally we'd like to accomplish this without overwriting previous information, especially if a teams' KPI is to track form fills each month.
+
+This solution was adapted from Jenna Molby's [UTM Touchpoint Solution](https://thespotforpardot.com/2021/09/10/how-to-capture-every-utm-touchpoint-in-salesforce). In this solution, I discuss the addition of maintaining records when a lead converts to a contact record and other use cases for the custom object.
+
+By using two Record-Triggered Flows — one on the Lead object and one on the Contact object — this system automatically logs every new form submission into a custom “Form Fill” object.
+
+Each record may capture UTM parameters, timestamps, and other contextual form details - whether that's offering more granularity to your reporting or even creating smart lists based on product interests. 
+
+## Purpose of Form Fill Flows
+Together, the two flows serve as a bridge between marketing attribution and CRM data hygiene:
+
+* **Lead Flow** (*Form Fill Dates – Lead*)\
+Runs when a Lead is created or updated. It captures form submissions, UTMs, and last-form details before the record is converted.
+
+* **Contact Flow** (*Form Fill Dates – Contact or Converted from Lead*)\
+Runs when a Contact is created (new conversion) or updated. It checks for duplicates and logs form fills post-conversion.
+
+## Business Use Cases
+
+This configuration enables multiple operational and analytical benefits:
+
+1. **Attribution Tracking**\
+Capture UTM Source, Medium, Campaign, and Content for each submission to support first-touch, last-touch, or multi-touch models.
+
+2. **Conversion History**\
+Maintain a detailed log of every form interaction even after a Lead is converted to a Contact — avoiding data loss during lead conversion.
+
+3. **Form Engagement Reporting**\
+Report on which campaigns, forms, or landing pages generate the most submissions over time.
+
+4. **Campaign Optimization**\
+Use historical form data to identify engagement trends, content effectiveness, and conversion lag by campaign or source.
+
+5. **Data Hygiene and Deduplication**\
+Prevent duplicate form fills and redundant records through decision logic built directly into the flow.
