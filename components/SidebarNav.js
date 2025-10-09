@@ -47,10 +47,10 @@ export default function SidebarNav() {
   return (
     <>
       {/* Mobile Horizontal Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 tablet:hidden">
-        <div className="flex items-center justify-between px-4 py-3">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 tablet:hidden">
+        <div className="flex items-center justify-between px-3 mobile:px-4 py-2 mobile:py-3">
           {/* Navigation Items */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-3 mobile:space-x-4 tablet:space-x-6 overflow-x-auto">
             {navItems.map((item) => {
               const isActive =
                 router.pathname === item.href ||
@@ -59,7 +59,7 @@ export default function SidebarNav() {
               return (
                 <Link key={item.name} href={item.href}>
                   <a
-                    className={`text-xs font-medium transition-colors hover:text-gray-900 dark:hover:text-gray-100 ${
+                    className={`text-xs mobile:text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-gray-100 whitespace-nowrap ${
                       isActive
                         ? 'text-gray-900 dark:text-gray-100'
                         : 'text-gray-600 dark:text-gray-400'
@@ -77,24 +77,24 @@ export default function SidebarNav() {
           </div>
 
           {/* Right Side - Theme Toggle & Social Icons */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 mobile:space-x-3 flex-shrink-0">
             {/* Social Icons */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 mobile:space-x-2">
               <a
                 href="https://linkedin.com/in/krizelminnema"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors p-1"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-3 h-3 mobile:w-4 mobile:h-4" />
               </a>
               <a
                 href="https://github.com/krizelminnema"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors p-1"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-3 h-3 mobile:w-4 mobile:h-4" />
               </a>
             </div>
 
@@ -112,21 +112,21 @@ export default function SidebarNav() {
               }}
             >
               {!mounted ? (
-                <Sun className="w-4 h-4" style={{ 
+                <Sun className="w-3 h-3 mobile:w-4 mobile:h-4" style={{ 
                   shapeRendering: 'geometricPrecision',
                   isolation: 'isolate',
                   position: 'relative',
                   zIndex: 10002
                 }} />
               ) : theme === 'light' ? (
-                <Moon className="w-4 h-4" style={{ 
+                <Moon className="w-3 h-3 mobile:w-4 mobile:h-4" style={{ 
                   shapeRendering: 'geometricPrecision',
                   isolation: 'isolate',
                   position: 'relative',
                   zIndex: 10002
                 }} />
               ) : (
-                <Sun className="w-4 h-4" style={{ 
+                <Sun className="w-3 h-3 mobile:w-4 mobile:h-4" style={{ 
                   shapeRendering: 'geometricPrecision',
                   isolation: 'isolate',
                   position: 'relative',

@@ -61,7 +61,7 @@ export default function Contact({ globalData }) {
           <h1>
             Hello.
           </h1>
-          <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-4 mobile:p-6 tablet:p-8">
+          <div className="backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 rounded-lg border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 p-4 mobile:p-6 tablet:p-8 laptop:p-10">
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <div className="space-y-4 text-gray-600 dark:text-gray-300 text-sans">
                 <div>

@@ -77,7 +77,7 @@ export default function Blog({ posts, globalData }) {
                   as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                   href={`/posts/[slug]`}
                 >
-                  <a className="py-4 mobile:py-6 tablet:py-10 px-4 mobile:px-6 tablet:px-16 block focus:outline-none focus:ring-4">
+                  <a className="py-4 mobile:py-6 tablet:py-8 laptop:py-10 px-4 mobile:px-6 tablet:px-8 laptop:px-16 block focus:outline-none focus:ring-4 transition-colors hover:bg-opacity-30 dark:hover:bg-opacity-60">
                     {post.data.date && (
                       <p className="blog-date">{post.data.date}</p>
                     )}
