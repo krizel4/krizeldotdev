@@ -108,16 +108,6 @@ export default function About({ globalData }) {
                   facts that only have a place at dive bar trivia nights.
                 </p>
               </div>
-
-              {/* Skills & Tech Stack */}
-              <div className="mt-8 mobile:mt-10 tablet:mt-12">
-                <div className="flex flex-wrap gap-2 mobile:gap-3 tablet:gap-4">
-                  <Skillbadge>
-                    JavaScript, React, Next.js, Node.js, Salesforce, Marketo,
-                    Analytics, Web Development
-                  </Skillbadge>
-                </div>
-              </div>
             </div>
 
             {/* Image - Right Side */}

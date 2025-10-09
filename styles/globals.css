@@ -3,14 +3,7 @@
 @tailwind utilities;
 @tailwind variants;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'moret', serif;
-}
+h1,h2,h3,h4,h5,h6 { font-family: 'moret', serif; }
 
 :root {
   --bg-color: #ffffff;
@@ -94,7 +87,6 @@ footer {
   color: var(--text-muted);
 }
 
-/* Text Styles */
 
 h1 {
   font-size: clamp(2.5rem, 8vw, 100px);
@@ -116,13 +108,8 @@ h3 {
   font-size: clamp(1.25rem, 3vw, 30px);
 }
 
-.text-serif {
-  font-family: 'moret', serif;
-}
-
-.text-sans {
-  font-family: 'roc-grotesk', sans-serif;
-}
+.text-serif { font-family: 'moret', serif; }
+.text-sans { font-family: 'roc-grotesk', sans-serif; }
 
 .prose-text {
   @apply text-lg text-gray-600 dark:text-gray-300 leading-relaxed;
@@ -164,7 +151,6 @@ h3 {
   font-family: 'moret', serif;
 }
 
-/* Ensure sidebar stays fixed and functional */
 .sidebar-nav {
   position: fixed !important;
   z-index: 10000 !important;
@@ -172,12 +158,11 @@ h3 {
   pointer-events: auto !important;
   top: 0 !important;
   left: 0 !important;
-  height: 100vh !important;
+  height: 80vh !important;
   isolation: isolate;
   contain: layout style paint;
 }
 
-/* Ensure all sidebar elements are clickable */
 .sidebar-nav a,
 .sidebar-nav button {
   pointer-events: auto !important;
@@ -185,7 +170,6 @@ h3 {
   z-index: 10000;
 }
 
-/* Improve icon rendering during theme transitions */
 .sidebar-nav svg {
   shape-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -198,79 +182,50 @@ h3 {
   z-index: 10001;
 }
 
-/* Smooth icon transitions */
 .sidebar-nav button svg {
   transition: all 0.3s ease-in-out;
-}
-
-/* Ensure sidebar icons are above content frames */
-.sidebar-nav {
-  isolation: isolate;
-  z-index: 10000 !important;
-}
-
-.sidebar-nav button {
-  isolation: isolate;
-  z-index: 10001 !important;
-  position: relative;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Mobile-specific improvements */
+.content-frame {
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+  margin: 40px auto;
+}
+
+@media (max-width: 459px) {
+  .content-frame { padding: 2rem 10%; }
+}
+
+@media (min-width: 460px) and (max-width: 767px) {
+  .content-frame { padding: 2rem 1.5rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-frame { padding: 3rem 2rem; }
+}
+
+@media (min-width: 1024px) and (max-width: 1535px) {
+  .content-frame { padding: 4rem 3rem; }
+}
+
+@media (min-width: 1536px) {
+  .content-frame { padding: 5rem 4rem; }
+}
+
 @media (max-width: 768px) {
-  /* Improve touch targets */
   a, button {
     min-height: 44px;
     min-width: 44px;
   }
-  
-  /* Better text readability on mobile */
-  .prose-text {
-    line-height: 1.7;
-  }
-  
-  /* Improve form elements */
-  input, textarea, select {
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
+  .prose-text { line-height: 1.7; }
+  input, textarea, select { font-size: 16px; }
 }
 
-.content-frame {
-  width: 100%;
-  max-width: 1200px;
-  padding: 2rem 1rem;
-  z-index: 1;
-  margin-top: 40px;
-}
-
-@media (min-width: 460px) {
-  .content-frame {
-    padding: 2rem 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .content-frame {
-    padding: 3rem 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .content-frame {
-    padding: 4rem 3rem;
-  }
-}
-
-@media (min-width: 1536px) {
-  .content-frame {
-    padding: 5rem 4rem;
-  }
-}
-
-/* CV Layout Styles */
 .cv-layout {
   min-height: calc(100vh - 200px);
   align-items: start;
@@ -286,15 +241,12 @@ html {
   height: fit-content;
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.cv-navigation-column::-webkit-scrollbar {
-  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
-}
+.cv-navigation-column::-webkit-scrollbar { display: none; }
 
-/* Mobile adjustments for CV */
 @media (max-width: 768px) {
   .cv-navigation-column {
     position: static;
@@ -303,7 +255,6 @@ html {
   }
 }
 
-/* CV Section Transition Animations */
 .cv-content-column .prose {
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
@@ -321,55 +272,34 @@ html {
 }
 
 @keyframes cvContentFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Slide-up animation for page titles */
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroHeaderSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroSubheaderSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInContent {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .animate-slide-up {
   animation: slideUp 0.8s ease-out forwards;
   opacity: 0;
-}
-
-/* Hero header and subheader animations */
-@keyframes heroHeaderSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroSubheaderSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+}mm
 
 .animate-hero-header {
   animation: heroHeaderSlideUp 1s ease-out forwards;
@@ -381,14 +311,4 @@ html {
   animation: heroSubheaderSlideUp 1s ease-out forwards;
   animation-delay: 0.6s;
   opacity: 0;
-}
-
-/* Content fade-in animation */
-@keyframes fadeInContent {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
