@@ -299,7 +299,7 @@ html {
 .animate-slide-up {
   animation: slideUp 0.8s ease-out forwards;
   opacity: 0;
-}mm
+}
 
 .animate-hero-header {
   animation: heroHeaderSlideUp 1s ease-out forwards;
