@@ -3,6 +3,17 @@
 @tailwind utilities;
 @tailwind variants;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
 h1,h2,h3,h4,h5,h6 { font-family: 'moret', serif; }
 
 :root {
@@ -27,6 +38,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
 .thick-underline {
@@ -194,27 +207,26 @@ html {
   width: 100%;
   max-width: 1200px;
   z-index: 1;
-  margin: 40px auto;
+  margin: 0 auto;
 }
 
-@media (max-width: 459px) {
-  .content-frame { padding: 2rem 10%; }
-}
-
-@media (min-width: 460px) and (max-width: 767px) {
-  .content-frame { padding: 2rem 1.5rem; }
+@media (min-width: 375px) and (max-width: 767px) {
+  .content-frame { 
+    padding: 1rem 1.5rem; 
+    margin-top: 14%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .content-frame { padding: 3rem 2rem; }
+  .content-frame { padding: 1.5rem 2rem; }
 }
 
 @media (min-width: 1024px) and (max-width: 1535px) {
-  .content-frame { padding: 4rem 3rem; }
+  .content-frame { padding: 2rem 3rem; }
 }
 
 @media (min-width: 1536px) {
-  .content-frame { padding: 5rem 4rem; }
+  .content-frame { padding: 2.5rem 4rem; }
 }
 
 @media (max-width: 768px) {

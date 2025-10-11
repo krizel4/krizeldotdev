@@ -3,6 +3,7 @@ import 'prismjs/themes/prism-tomorrow.css';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import PageTransition from '../components/PageTransition';
 import SidebarNav from '../components/SidebarNav';
+import BackgroundPattern from '../components/BackgroundPattern';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,9 +11,12 @@ function MyApp({ Component, pageProps }) {
       <span className="theme-krizel" />
       {/* Sidebar outside of animated container */}
       <SidebarNav />
-      <PageTransition>
-        <Component {...pageProps} />
-      </PageTransition>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative">
+        <BackgroundPattern />
+        <PageTransition>
+          <Component {...pageProps} />
+        </PageTransition>
+      </div>
     </ThemeProvider>
   );
 }
