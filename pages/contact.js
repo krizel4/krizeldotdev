@@ -48,12 +48,12 @@ export default function Contact({ globalData }) {
                   <p>
                     🐱 GitHub:{' '}
                     <a
-                      href="https://github.com/krizelminnema"
+                      href="https://github.com/krizel4"
                       className="text-primary dark:text-[#b7b7c3] hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      github.com/krizelminnema
+                      github.com/krizel4
                     </a>
                   </p>
                 </div>

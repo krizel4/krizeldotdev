@@ -110,7 +110,7 @@ export default function Footer({ copyrightText }) {
                 <Linkedin className="w-4 h-4 mobile:w-5 mobile:h-5" />
               </a>
               <a
-                href="https://github.com/krizelminnema"
+                href="https://github.com/krizel4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
