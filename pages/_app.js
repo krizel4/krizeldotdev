@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/marker-scoring.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import PageTransition from '../components/PageTransition';

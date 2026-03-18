@@ -1,0 +1,767 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/* ─── Scoped variables ─────────────────────────────────────────────── */
+.marker-scoring-page {
+  --ms-bg:        #ffffff;
+  --ms-bg2:       #f8f8f8;
+  --ms-bg3:       #f0f0f0;
+  --ms-bg4:       #e8e8e8;
+  --ms-line:      rgba(0,0,0,0.08);
+  --ms-line2:     rgba(0,0,0,0.12);
+  --ms-text:      #0c0d10;
+  --ms-accent:    #84329B;
+  --ms-accent-bg: rgba(132,50,155,0.08);
+  --ms-accent-glow: rgba(132,50,155,0.15);
+  --ms-add:       #5F8DDA;
+  --ms-add-bg:    rgba(95,141,218,0.08);
+  --ms-add-glow:  rgba(95,141,218,0.15);
+  --ms-radius:    10px;
+  --ms-radius-lg: 16px;
+  --ms-sans:      'Roboto', sans-serif;
+
+  font-family: var(--ms-sans);
+  font-size: 15px;
+  color: var(--ms-text);
+  background: var(--ms-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.marker-scoring-page *, .marker-scoring-page *::before, .marker-scoring-page *::after {
+  box-sizing: border-box;
+}
+
+.marker-scoring-page ul, .marker-scoring-page ol {
+  margin: 20px;
+  color: var(--ms-text);
+}
+
+/* ─── Two Column Comparison ────────────────────────────────────────── */
+.marker-scoring-page .two-column-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.marker-scoring-page .winner {
+  color: var(--ms-add);
+  font-size: 20px;
+}
+
+.marker-scoring-page .comparison-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .marker-scoring-page .two-column-comparison {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* noise overlay */
+.marker-scoring-page .ms-noise {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────── */
+.marker-scoring-page .ms-header {
+  position: relative;
+  z-index: 1;
+  padding: 3.5rem 2.5rem 2rem;
+  border-bottom: 1px solid var(--ms-line);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.marker-scoring-page .ms-header-eyebrow {
+  font-family: var(--ms-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ms-accent);
+  margin-bottom: 0.6rem;
+}
+
+.marker-scoring-page .ms-header-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ms-accent);
+  margin-bottom: 0.7rem;
+}
+
+/* ─── Main layout ───────────────────────────────────────────────────── */
+.marker-scoring-page .ms-logic {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 3rem;
+  display: block;
+}
+
+.marker-scoring-page .ms-logic p {
+  font-size: 16px;
+}
+
+.marker-scoring-page .ms-pie {
+  color: var(--ms-accent);
+  margin-top: 20px;
+}
+
+.marker-scoring-page .ms-main {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .marker-scoring-page .ms-main { grid-template-columns: 1fr; padding: 1.5rem; }
+  .marker-scoring-page .ms-header { padding: 2rem 1.5rem 1.5rem; }
+}
+
+/* ─── Panels ────────────────────────────────────────────────────────── */
+.marker-scoring-page .ms-panel {
+  background: var(--ms-bg2);
+  border: 1px solid var(--ms-line);
+  border-radius: var(--ms-radius-lg);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  animation: msFadeSlide 0.5s ease both;
+}
+
+.marker-scoring-page .ms-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ms-radius-lg);
+  background: radial-gradient(ellipse at top left, rgba(132,50,155,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.marker-scoring-page .ms-panel-results {
+  animation-delay: 0.1s;
+}
+
+.marker-scoring-page .ms-panel-header {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.marker-scoring-page .ms-panel-num {
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--ms-accent);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.marker-scoring-page .ms-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ms-text);
+  margin-bottom: 0.3rem;
+}
+
+.marker-scoring-page .ms-panel-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ms-text);
+  margin-bottom: 20px;
+}
+
+/* ─── Rank weights strip ────────────────────────────────────────────── */
+.marker-scoring-page .ms-rank-weights {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.marker-scoring-page .ms-weight-pill {
+  font-family: var(--ms-sans);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--ms-bg3);
+  border: 1px solid var(--ms-line2);
+  color: var(--ms-text);
+}
+
+.marker-scoring-page .ms-weight-pill strong {
+  color: var(--ms-accent);
+  font-weight: 500;
+}
+
+/* ─── Drag-sort rank list ───────────────────────────────────────────── */
+.marker-scoring-page .ms-rank-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 1.75rem;
+  padding: 0;
+}
+
+.marker-scoring-page .ms-rank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ms-bg3);
+  border: 1px solid var(--ms-line);
+  border-radius: var(--ms-radius);
+  padding: 12px 14px;
+  cursor: grab;
+  user-select: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+
+.marker-scoring-page .ms-rank-item:active { cursor: grabbing; }
+
+.marker-scoring-page .ms-rank-item.dragging {
+  opacity: 0.35;
+  transform: scale(0.98);
+}
+
+.marker-scoring-page .ms-rank-item.drag-over {
+  border-color: var(--ms-accent);
+  background: var(--ms-bg4);
+  box-shadow: 0 0 0 1px var(--ms-accent);
+}
+
+.marker-scoring-page .ms-rank-badge {
+  font-family: var(--ms-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ms-bg);
+  background: var(--ms-accent);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.marker-scoring-page .ms-rank-item:nth-child(2) .ms-rank-badge { background: rgba(132,50,155,0.8); }
+.marker-scoring-page .ms-rank-item:nth-child(3) .ms-rank-badge { background: rgba(132,50,155,0.6); }
+
+.marker-scoring-page .ms-rank-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ms-text);
+  flex: 1;
+}
+
+.marker-scoring-page .ms-rank-weight {
+  font-family: var(--ms-sans);
+  font-size: 0.72rem;
+  color: var(--ms-text);
+}
+
+.marker-scoring-page .ms-drag-handle {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+  opacity: 0.3;
+}
+
+.marker-scoring-page .ms-drag-handle span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--ms-text);
+  border-radius: 2px;
+}
+
+.marker-scoring-page .ms-rank-item:hover .ms-drag-handle { opacity: 0.7; }
+
+.marker-scoring-page .ms-move-btn {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  color: var(--ms-text);
+  width: 20px;
+  height: 16px;
+  cursor: pointer;
+  font-size: 9px;
+  line-height: 1;
+  padding: 0;
+}
+
+.marker-scoring-page .ms-move-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ─── Capability legend ─────────────────────────────────────────────── */
+.marker-scoring-page .ms-capability-legend {
+  border-top: 1px solid var(--ms-line);
+  padding-top: 1.25rem;
+}
+
+.marker-scoring-page .ms-cap-legend-title {
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ms-text);
+  margin-bottom: 0.75rem;
+}
+
+.marker-scoring-page .ms-cap-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.marker-scoring-page .ms-cap-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(6, 28px);
+  gap: 4px;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.marker-scoring-page .ms-cap-row.ms-cap-header {
+  color: var(--ms-text);
+  font-family: var(--ms-sans);
+  font-size: 0.62rem;
+}
+
+.marker-scoring-page .ms-cap-feat {
+  color: var(--ms-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.marker-scoring-page .ms-cap-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  justify-self: center;
+}
+
+.marker-scoring-page .ms-cap-1 { background: rgba(0,0,0,0.04); color: var(--ms-text); }
+.marker-scoring-page .ms-cap-2 { background: var(--ms-accent-bg); color: var(--ms-accent); }
+.marker-scoring-page .ms-cap-3 { background: var(--ms-accent-bg); color: var(--ms-accent); }
+.marker-scoring-page .ms-cap-4 { background: var(--ms-accent-bg); color: var(--ms-accent); }
+.marker-scoring-page .ms-cap-5 { background: var(--ms-accent-bg); color: var(--ms-accent); }
+
+/* ─── Formula chips ─────────────────────────────────────────────────── */
+.marker-scoring-page .ms-formula-legend {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.marker-scoring-page .ms-formula-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  border: 1px solid transparent;
+}
+
+.marker-scoring-page .ms-formula-symbol {
+  font-family: var(--ms-sans);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.marker-scoring-page .ms-mult-chip { background: var(--ms-accent-bg); border-color: rgba(132,50,155,0.2); color: var(--ms-accent); }
+.marker-scoring-page .ms-add-chip { background: var(--ms-add-bg); border-color: rgba(95,141,218,0.2); color: var(--ms-add); }
+
+/* ─── Score grid ────────────────────────────────────────────────────── */
+.marker-scoring-page .ms-score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 700px) {
+  .marker-scoring-page .ms-score-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.marker-scoring-page .ms-score-card {
+  background: var(--ms-bg3);
+  border: 1px solid var(--ms-line);
+  border-radius: var(--ms-radius);
+  padding: 12px 14px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.marker-scoring-page .ms-score-card.winner-mult { border-color: rgba(132,50,155,0.4); box-shadow: 0 0 18px var(--ms-accent-glow); }
+.marker-scoring-page .ms-score-card.winner-add { border-color: rgba(95,141,218,0.4); box-shadow: 0 0 18px var(--ms-add-glow); }
+.marker-scoring-page .ms-score-card.winner-both { border-color: rgba(132,50,155,0.5); box-shadow: 0 0 22px var(--ms-accent-glow), 0 0 22px var(--ms-add-glow); }
+
+.marker-scoring-page .ms-card-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ms-text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.marker-scoring-page .ms-card-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.marker-scoring-page .ms-card-score-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.marker-scoring-page .ms-score-type {
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.marker-scoring-page .ms-score-type.mt { color: var(--ms-accent); }
+.marker-scoring-page .ms-score-type.at { color: var(--ms-add); }
+
+.marker-scoring-page .ms-score-bar-wrap {
+  flex: 1;
+  height: 4px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.marker-scoring-page .ms-score-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.marker-scoring-page .ms-score-bar.mb { background: var(--ms-accent); }
+.marker-scoring-page .ms-score-bar.ab { background: var(--ms-add); }
+
+.marker-scoring-page .ms-score-num {
+  font-family: var(--ms-sans);
+  font-size: 0.7rem;
+  min-width: 24px;
+  text-align: right;
+}
+
+.marker-scoring-page .ms-score-num.mn { color: var(--ms-accent); }
+.marker-scoring-page .ms-score-num.an { color: var(--ms-add); }
+
+.marker-scoring-page .ms-card-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.marker-scoring-page .ms-badge {
+  font-family: var(--ms-sans);
+  font-size: 0.58rem;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+}
+
+.marker-scoring-page .ms-badge-mult { background: var(--ms-accent-bg); color: var(--ms-accent); border: 1px solid rgba(132,50,155,0.25); }
+.marker-scoring-page .ms-badge-add { background: var(--ms-add-bg); color: var(--ms-add); border: 1px solid rgba(95,141,218,0.2); }
+
+/* ─── Rank table ────────────────────────────────────────────────────── */
+.marker-scoring-page .ms-table-wrap {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.marker-scoring-page .ms-table-label {
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ms-text);
+  margin-bottom: 0.6rem;
+}
+
+.marker-scoring-page .ms-rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.marker-scoring-page .ms-rank-table th {
+  font-family: var(--ms-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--ms-text);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ms-line);
+}
+
+.marker-scoring-page .ms-rank-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ms-line);
+  vertical-align: middle;
+}
+
+.marker-scoring-page .ms-rank-table tbody tr { transition: background 0.15s; }
+.marker-scoring-page .ms-rank-table tbody tr:hover { background: var(--ms-bg3); }
+.marker-scoring-page .ms-rank-table tbody tr:last-child td { border-bottom: none; }
+
+.marker-scoring-page .ms-mult-col { color: var(--ms-accent); }
+.marker-scoring-page .ms-add-col { color: var(--ms-add); }
+
+.marker-scoring-page .ms-prod-cell { font-weight: 600; }
+
+.marker-scoring-page .ms-rank-num-cell {
+  font-family: var(--ms-sans);
+  font-weight: 500;
+}
+
+.marker-scoring-page .ms-rank-num-cell.rank-1 { color: #ffd97a; }
+.marker-scoring-page .ms-rank-num-cell.rank-2 { color: #c8c8c8; }
+.marker-scoring-page .ms-rank-num-cell.rank-3 { color: #c09060; }
+
+.marker-scoring-page .ms-delta-cell {
+  font-family: var(--ms-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.marker-scoring-page .ms-delta-up { color: #6edfa8; }
+.marker-scoring-page .ms-delta-down { color: #ff7070; }
+.marker-scoring-page .ms-delta-same { color: var(--ms-text); }
+
+/* ─── Insight box ───────────────────────────────────────────────────── */
+.marker-scoring-page .ms-insight-box {
+  background: var(--ms-bg3);
+  border: 1px solid var(--ms-line2);
+  border-left: 3px solid var(--ms-accent);
+  border-radius: 0 var(--ms-radius) var(--ms-radius) 0;
+  padding: 14px 16px;
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: var(--ms-text);
+  min-height: 48px;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+
+.marker-scoring-page .ms-insight-box .hl-mult { color: var(--ms-accent); font-weight: 600; }
+.marker-scoring-page .ms-insight-box .hl-add { color: var(--ms-add); font-weight: 600; }
+
+/* ─── Progression Section ───────────────────────────────────────────── */
+.marker-scoring-page .ms-progression-section {
+  position: relative;
+  margin: 0 auto;
+}
+
+.marker-scoring-page .ms-progression-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ms-text);
+  margin-bottom: 1.5rem;
+}
+
+.marker-scoring-page .ms-progression-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: var(--ms-bg);
+  border: 1px solid var(--ms-line);
+  border-radius: var(--ms-radius-lg);
+  overflow: hidden;
+}
+
+.marker-scoring-page .ms-progression-table th {
+  font-family: var(--ms-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--ms-text);
+  padding: 16px 20px;
+  text-align: left;
+  background: var(--ms-bg2);
+  border-bottom: 1px solid var(--ms-line);
+}
+
+.marker-scoring-page .ms-progression-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--ms-line);
+  color: var(--ms-text);
+  font-weight: 500;
+}
+
+.marker-scoring-page .ms-progression-table tbody tr { transition: background 0.15s; }
+.marker-scoring-page .ms-progression-table tbody tr:hover { background: var(--ms-bg3); }
+.marker-scoring-page .ms-progression-table tbody tr:last-child td { border-bottom: none; }
+
+.marker-scoring-page .ms-progression-table .total-row {
+  background: var(--ms-bg2);
+  font-weight: 600;
+}
+
+.marker-scoring-page .ms-progression-table .total-row td {
+  border-top: 2px solid var(--ms-line);
+  padding: 16px 20px;
+}
+
+@media (max-width: 900px) {
+  .marker-scoring-page .ms-progression-section { padding: 2rem 1.5rem 3rem; }
+}
+
+/* ─── Password gate ─────────────────────────────────────────────────── */
+.marker-scoring-page .ms-password-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.marker-scoring-page .ms-password-card {
+  background: var(--ms-bg2);
+  border: 1px solid var(--ms-line);
+  border-radius: var(--ms-radius-lg);
+  padding: 3rem 2.5rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: msFadeSlide 0.5s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.marker-scoring-page .ms-password-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ms-radius-lg);
+  background: radial-gradient(ellipse at top left, rgba(132,50,155,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.marker-scoring-page .ms-password-icon {
+  color: var(--ms-accent);
+  margin-bottom: 1.25rem;
+}
+
+.marker-scoring-page .ms-password-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ms-text);
+  margin-bottom: 0.5rem;
+}
+
+.marker-scoring-page .ms-password-desc {
+  font-size: 0.88rem;
+  color: var(--ms-text);
+  opacity: 0.7;
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.marker-scoring-page .ms-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.marker-scoring-page .ms-password-input {
+  font-family: var(--ms-sans);
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  border: 1px solid var(--ms-line2);
+  border-radius: var(--ms-radius);
+  background: var(--ms-bg);
+  color: var(--ms-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.marker-scoring-page .ms-password-input:focus {
+  border-color: var(--ms-accent);
+  box-shadow: 0 0 0 3px var(--ms-accent-glow);
+}
+
+.marker-scoring-page .ms-password-btn {
+  font-family: var(--ms-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--ms-radius);
+  background: var(--ms-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.marker-scoring-page .ms-password-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.marker-scoring-page .ms-password-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.marker-scoring-page .ms-password-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.marker-scoring-page .ms-password-error {
+  color: #ff7070;
+  font-size: 0.82rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* ─── Animation ─────────────────────────────────────────────────────── */
+@keyframes msFadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

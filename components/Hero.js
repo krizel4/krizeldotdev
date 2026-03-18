@@ -16,8 +16,7 @@ export default function Hero({ globalData }) {
       </div>
       <div className="mt-8 mobile:mt-12 tablet:mt-16 max-w-full mobile:max-w-lg">
         <p className="text-sm mobile:text-base tablet:text-lg text-gray-600 dark:text-gray-400 p-4 mobile:p-6 tablet:p-8 leading-relaxed">
-          Focused on innovating user experiences and driving measurable
-          growth.
+          A technical and strategic partner developing executive strategy and high-performance user experiences that deliver measurable business results.
         </p>
         <p className="text-sm mobile:text-base tablet:text-lg text-gray-600 dark:text-gray-400 p-4 mobile:p-6 tablet:p-8 leading-relaxed">
           Currently working as a Digital Marketing Operations Manager at{' '}
