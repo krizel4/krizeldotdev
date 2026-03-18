@@ -11,7 +11,7 @@ const PRODUCTS = {
   mammomark: 'MammoMARK',
   mammostar: 'MammoSTAR',
   lumimark: 'LumiMARK',
-  biomarc: 'BioMaRC',
+  biomarc: 'BiomarC',
 };
 
 const PRODUCT_SHORT = {
@@ -468,12 +468,14 @@ export default function MarkerScoring({ globalData }) {
         <section className="ms-progression-section">
           <h2 className="ms-progression-title">Rank Order Centroid (ROC Weighting)</h2>
           <p className="ms-panel-desc">ROC is a method used in data analysis. It might be helpful to imagine a pie contest.</p>
-          <p className="ms-panel-desc">If you win first place, you should be awarded by proportionally getting the largest pie (see Winner Pie chart below). But if it&apos;s addition, someone with a capability of 5, but ranked at the last position would somewhat get a &quot;bonus pie.&quot;</p>
-          <p className="ms-panel-desc">For example, let&apos;s look at <strong>MammoMARK</strong> which has scores of 5 for affordability. If a user ranks affordability as first, if it&apos;s multiplied, (5x6 = 30), it&apos;s awarded a larger portion of the pie. If it&apos;s addition (5 + 1 = 6), this will cause a smaller gap from products like <strong>HydroMARK Plus</strong>, which outperforms all qualities against Biomarc and MammoMARK except affordability.</p>
-          <p className="ms-panel-desc">For example, let&apos;s look at this ranking: Affordability, long-Term US visibility, ease of locating and anti-migration. We&apos;ll attribute 6, 4, 2, and 1 respectively for addition.</p>
+          <p className="ms-panel-desc">If you win first place, you should be awarded by proportionally getting the largest pie (see Winner Pie chart below). But if it&apos;s addition, someone with a capability of 5, but ranked at the last position would somewhat get a &quot;bonus pie.&quot; In the end, people may get close to similar pie sizes.</p>
+          <p className="ms-panel-desc">For example, let&apos;s look at <strong>MammoMARK</strong> which has scores of 5 for affordability. If a user ranks affordability as first, when it&apos;s multiplied, (5x6 = 30), it&apos;s awarded a larger portion of the pie. If it&apos;s addition (5 + 1 = 6), this will cause a smaller gap from products like <strong>HydroMARK Plus</strong>, which outperforms in all the other criteria against MammoMARK.</p>
+          <p className="ms-panel-desc">For example, let&apos;s look at this ranking: 1) affordability, 2) long-term US visibility, 3) ease of locating and 4) anti-migration. We&apos;ll attribute 6, 4, 2, and 1 respectively for addition.</p>
 
           <div className="two-column-comparison">
             <div className="comparison-column">
+            <strong className="winner">ROC Weighting</strong>
+
               <ul>
                 <li><strong>HM+</strong></li>
                 <li>Affordability: 1×6 = 6</li>
@@ -494,6 +496,7 @@ export default function MarkerScoring({ globalData }) {
             </div>
 
             <div className="comparison-column">
+            <strong className="winner">Addition</strong>
               <ul>
                 <li><strong>HM+</strong></li>
                 <li>Affordability: 1+6 = 7</li>
