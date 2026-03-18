@@ -223,11 +223,11 @@ export default function CV({ globalData }) {
               SEO, social, and web campaigns, I achieved top keyword rankings,
               national publication features, and multiple industry awards,
               ultimately photographing over 100 weddings.
-              <p>
-               After selling the business in 2019, I transitioned into
-                corporate marketing to continue applying growth and digital
-                strategy at scale.
-              </p>
+            </p>
+            <p>
+              After selling the business in 2019, I transitioned into
+              corporate marketing to continue applying growth and digital
+              strategy at scale.
             </p>
           </div>
 
