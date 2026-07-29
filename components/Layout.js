@@ -24,9 +24,9 @@ export default function Layout({ children, showNavigation = true }) {
     } else if (userTheme === 'light') {
       document.documentElement.classList.remove('dark');
     } else {
-      // Default to light mode if no theme preference is stored
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      // Default to dark mode if no theme preference is stored
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     }
     return;
   };

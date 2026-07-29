@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 export default function SidebarNav() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -20,7 +20,7 @@ export default function SidebarNav() {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
   }, []);
 

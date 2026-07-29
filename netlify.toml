@@ -1,0 +1,14 @@
+[build]
+  command = "yarn run build"
+  publish = ".next"
+
+# Context-specific builds
+[context.production]
+  # Production builds will use plugins configured in Netlify UI
+
+[context.deploy-preview]
+  # Deploy previews will use plugins configured in Netlify UI
+
+# Local builds - disable Lighthouse
+[context.dev]
+  command = "yarn run build"

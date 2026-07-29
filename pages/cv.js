@@ -135,13 +135,50 @@ export default function CV({ globalData }) {
         </>
       ),
     },
+    parata: {
+      title: 'BD Parata',
+      subtitle: '⸺ Senior Manager, Marketing Operations',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h3 className="date-heading">July 2026 - Current</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              I lead a marketing team while owning and driving the marketing
+              technology stack to build demand-generation programs end-to-end —
+              from lead nurturing and omnichannel campaigns through to pipeline
+              and revenue results. I also drive strategic and cross-functional
+              work: content and communications, business development, showroom
+              strategy, and partnering with Sales, Product Marketing, and
+              Legal/Regulatory.
+            </p>
+
+            <h3>About the Company</h3>
+            <p className="text-base">
+              BD Parata offers the most comprehensive, scalable pharmacy
+              automation portfolio with pouch and blister medication adherence
+              packaging, high-speed automated robotic dispensing technologies,
+              and pharmacy workflow solutions.
+            </p>
+
+            {/* <div className="mt-6">
+              <h3>Technical Skills</h3>
+              <Skillbadge>
+                Salesforce, Marketo, AEM.Live, Marketo Measure, Tableau, UX
+                Optimization, HTML, CSS, JavaScript, Adobe Creative Cloud, SEM,
+                Google AdWords
+              </Skillbadge>
+            </div> */}
+          </div>
+        </div>
+      ),
+    },
     mammotome: {
       title: 'Mammotome',
       subtitle: '⸺ Manager, Digital Marketing Operations',
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="date-heading">November 2020 - Present</h3>
+            <h3 className="date-heading">November 2020 - July 2026</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               I direct the digital marketing strategy while also serving as the
               primary solutions architect responsible for unifying martech
@@ -209,7 +246,7 @@ export default function CV({ globalData }) {
       ),
     },
     vivre: {
-      title: 'Vivre d\'Amour',
+      title: "Vivre d'Amour",
       subtitle: '⸺ Manager, Marketing Operations',
       content: (
         <div className="space-y-6">
@@ -224,7 +261,7 @@ export default function CV({ globalData }) {
               national publication features, and multiple industry awards,
               ultimately photographing over 100 weddings.
               <p>
-               After selling the business in 2019, I transitioned into
+                After selling the business in 2019, I transitioned into
                 corporate marketing to continue applying growth and digital
                 strategy at scale.
               </p>

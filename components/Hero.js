@@ -20,14 +20,14 @@ export default function Hero({ globalData }) {
           growth.
         </p>
         <p className="text-sm mobile:text-base tablet:text-lg text-gray-600 dark:text-gray-400 p-4 mobile:p-6 tablet:p-8 leading-relaxed">
-          Currently working as a Digital Marketing Operations Manager at{' '}
+          Currently working as the Senior Manager of Marketing Operations{' '}
           <a
-            href="https://mammotome.com"
+            href="https://parata.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
           >
-            Mammotome.
+            BD Parata.
           </a>
         </p>
       </div>

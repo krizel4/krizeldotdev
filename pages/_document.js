@@ -4,7 +4,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" className="theme-compiled">
+      <Html lang="en" className="theme-compiled dark">
         <Head>
           <link rel="stylesheet" href="https://use.typekit.net/qap4ksp.css" />
         </Head>
