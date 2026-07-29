@@ -102,7 +102,7 @@ export default function Footer({ copyrightText }) {
             {/* Social Links */}
             <div className="flex space-x-3 mobile:space-x-4">
               <a
-                href="https://linkedin.com/in/krizelminnema"
+                href="https://linkedin.com/in/krizel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"

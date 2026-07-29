@@ -37,12 +37,12 @@ export default function Contact({ globalData }) {
                   <p>
                     💼 LinkedIn:{' '}
                     <a
-                      href="https://linkedin.com/in/krizelminnema"
+                      href="https://linkedin.com/in/krizel"
                       className="text-primary dark:text-[#b7b7c3] hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      linkedin.com/in/krizelminnema
+                      linkedin.com/in/krizel
                     </a>
                   </p>
                   <p>

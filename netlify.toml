@@ -2,6 +2,9 @@
   command = "yarn run build"
   publish = ".next"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # Context-specific builds
 [context.production]
   # Production builds will use plugins configured in Netlify UI

@@ -1,6 +1,5 @@
 import SEO from '../components/SEO';
 import { getGlobalData } from '../utils/global-data';
-import Image from 'next/image';
 import Skillbadge from '../components/Skillbadge';
 import { useEffect } from 'react';
 import pageTransitionManager from '../utils/page-transitions';

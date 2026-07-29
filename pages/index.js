@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
 import { useEffect } from 'react';
 import Hero from '../components/Hero';
@@ -6,10 +5,7 @@ import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
 import pageTransitionManager from '../utils/page-transitions';
 
-export default function Index({ posts, globalData }) {
-  // Show only the first 3 posts as featured posts
-  const featuredPosts = posts.slice(0, 3);
-
+export default function Index({ globalData }) {
   useEffect(() => {
     if (pageTransitionManager) {
       pageTransitionManager.switchPage('/');

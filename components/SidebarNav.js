@@ -119,7 +119,7 @@ export default function SidebarNav() {
                 <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                   <div className="flex space-x-6">
                     <a
-                      href="https://linkedin.com/in/krizelminnema"
+                      href="https://linkedin.com/in/krizel"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
@@ -215,7 +215,7 @@ export default function SidebarNav() {
         {/* Social Icons */}
         <div className="flex flex-col space-y-4 mt-8">
           <a
-            href="https://linkedin.com/in/krizelminnema"
+            href="https://linkedin.com/in/krizel"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"

@@ -11,8 +11,6 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import ArrowIcon from '../../components/ArrowIcon';
 import CustomLink from '../../components/CustomLink';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import SEO from '../../components/SEO';
 import pageTransitionManager from '../../utils/page-transitions';
 
