@@ -19,7 +19,7 @@ export default function Hero({ globalData }) {
            A tech-forward strategist developing high-performing user experiences that deliver meaningful, measurable business results.
         </p>
         <p className="text-sm mobile:text-base tablet:text-lg text-gray-600 dark:text-gray-400 p-4 mobile:p-6 tablet:p-8 leading-relaxed">
-          Currently working as the Senior Manager of Marketing Operations{' '}
+          Currently working as the Senior Manager of Marketing Operations at{' '}
           <a
             href="https://parata.com"
             target="_blank"
